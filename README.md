@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stoffwechsel - Modern Fashion Store
 
-## Getting Started
+Eine moderne, elegante Website für das Modegeschäft **Stoffwechsel**, gebaut mit Next.js, React, TypeScript und Tailwind CSS.
 
-First, run the development server:
+## 🎨 Design
+
+Die Website verwendet eine edle Farbpalette:
+- **Primäres Weiß**: `#FFFFFF`
+- **Dunkles Grau**: `#1A1A1A` (elegant)
+- **Helles Grau**: `#E5E5E5` (clean)
+- **Neon Blau**: `#00D9FF` (Buttons & Akzente)
+
+### Design-Merkmale
+- Moderner, cleaner Stil
+- Geometrische Formen strategisch platziert
+- Kantige, zueinander passende Elemente
+- Große, eindrucksvolle Bilder
+- Minimalistischer Ansatz
+
+## 🚀 Erste Schritte
+
+Development-Server starten:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Öffnen Sie [http://localhost:3000](http://localhost:3000) in Ihrem Browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 15+ (App Router)
+- **UI Library**: React 19+
+- **Styling**: Tailwind CSS
+- **Sprache**: TypeScript
+- **Build Tool**: Turbopack
 
-## Learn More
+## 🛠️ Entwicklung
 
-To learn more about Next.js, take a look at the following resources:
+Die Hauptseite befindet sich in `src/app/page.tsx`. Änderungen werden automatisch im Browser aktualisiert.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Projektstruktur
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+stoffwechsel/
+├── src/
+│   └── app/
+│       ├── page.tsx          # Hauptseite
+│       ├── layout.tsx         # Layout-Komponente
+│       └── globals.css        # Globale Styles
+├── public/                    # Statische Assets
+└── .github/
+    └── copilot-instructions.md
+```
 
-## Deploy on Vercel
+## 📝 Hinweise
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Die Platzhalter für Bilder sollten durch echte Produktfotos ersetzt werden
+- Alle Links und Formulare sind als Beispiele implementiert und müssen mit Backend-Funktionalität verbunden werden
+- Die Navigation ist responsiv und funktioniert auf allen Geräten
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment
+
+Am einfachsten mit [Vercel](https://vercel.com/new):
+
+```bash
+npm run build
+```
+
+Weitere Informationen finden Sie in der [Next.js Deployment-Dokumentation](https://nextjs.org/docs/app/building-your-application/deploying).
