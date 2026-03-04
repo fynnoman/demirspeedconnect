@@ -1,58 +1,63 @@
 'use client';
 
+// ============================================================
+// PLATZHALTER – Leistungen-Seite
+// ============================================================
+
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Lenis from 'lenis';
 
+// --- Leistungen hier eintragen ---
 const leistungen = [
   {
-    category: 'TEXTILDRUCK',
-    icon: '👕',
-    items: ['T-Shirts', 'Poloshirts', 'Tassen', 'Teller', 'Tragetaschen', 'Arbeitskleidung'],
-    desc: 'Individueller Druck auf Textilien – für Firmen, Vereine, Events und Privatpersonen.',
+    category: 'LEISTUNG 1',
+    icon: '📦',
+    items: ['Unterpunkt A', 'Unterpunkt B', 'Unterpunkt C', 'Unterpunkt D', 'Unterpunkt E', 'Unterpunkt F'],
+    desc: 'Kurze Beschreibung der Leistung und des Nutzens für den Kunden.',
     color: '#E63329',
   },
   {
-    category: 'VEREINSBEDARF',
-    icon: '🏆',
-    items: ['Trikots & Sporttextilien', 'Stempel', 'Aufkleber', 'Vereins-Flyer', 'Banner', 'Pokale beschriften'],
-    desc: 'Alles was Vereine brauchen – von der Vereinsjacke bis zur Festschrift.',
+    category: 'LEISTUNG 2',
+    icon: '🔧',
+    items: ['Unterpunkt A', 'Unterpunkt B', 'Unterpunkt C', 'Unterpunkt D', 'Unterpunkt E', 'Unterpunkt F'],
+    desc: 'Kurze Beschreibung der Leistung und des Nutzens für den Kunden.',
     color: '#111111',
   },
   {
-    category: 'PRINT',
-    icon: '🖨️',
-    items: ['Visitenkarten', 'Flyer', 'Broschüren', 'Plakate', 'Briefpapier', 'Briefumschläge'],
-    desc: 'Professionelles Printmaterial für Ihren Unternehmensauftritt.',
+    category: 'LEISTUNG 3',
+    icon: '✏️',
+    items: ['Unterpunkt A', 'Unterpunkt B', 'Unterpunkt C', 'Unterpunkt D', 'Unterpunkt E', 'Unterpunkt F'],
+    desc: 'Kurze Beschreibung der Leistung und des Nutzens für den Kunden.',
     color: '#1A1A1A',
   },
   {
-    category: 'BÜCHER & KALENDER',
-    icon: '📚',
-    items: ['Diplomarbeiten', 'Bachelorarbeiten', 'Bücher', 'Kalender', 'Festschriften', 'Magazine'],
-    desc: 'Bindung und Druck von Büchern, Abschlussarbeiten und Sonderdrucken.',
+    category: 'LEISTUNG 4',
+    icon: '📄',
+    items: ['Unterpunkt A', 'Unterpunkt B', 'Unterpunkt C', 'Unterpunkt D', 'Unterpunkt E', 'Unterpunkt F'],
+    desc: 'Kurze Beschreibung der Leistung und des Nutzens für den Kunden.',
     color: '#E63329',
   },
   {
-    category: 'BESCHRIFTUNG',
+    category: 'LEISTUNG 5',
     icon: '🚗',
-    items: ['Fahrzeugbeschriftung', 'Schaufensterbeschriftung', 'Schilder', 'Magnetfolien', 'Aufkleber', 'Leuchtbuchstaben'],
-    desc: 'Damit Ihr Unternehmen auffällt – auf der Straße und im Schaufenster.',
+    items: ['Unterpunkt A', 'Unterpunkt B', 'Unterpunkt C', 'Unterpunkt D', 'Unterpunkt E', 'Unterpunkt F'],
+    desc: 'Kurze Beschreibung der Leistung und des Nutzens für den Kunden.',
     color: '#111111',
   },
   {
-    category: 'DESIGN & MEHR',
-    icon: '✏️',
-    items: ['Logoentwicklung', 'Datenaufbereitung', 'Scans bis DIN A3', 'Stempelherstellung', 'Startup-Pakete', 'Gestaltung'],
-    desc: 'Von der ersten Idee bis zum fertigen Produkt – kreative Unterstützung aus einer Hand.',
+    category: 'LEISTUNG 6',
+    icon: '⭐',
+    items: ['Unterpunkt A', 'Unterpunkt B', 'Unterpunkt C', 'Unterpunkt D', 'Unterpunkt E', 'Unterpunkt F'],
+    desc: 'Kurze Beschreibung der Leistung und des Nutzens für den Kunden.',
     color: '#222222',
   },
 ];
 
 function LeistungSection({ leistung, index }: { leistung: typeof leistungen[0]; index: number }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
   const x = useTransform(scrollYProgress, [0, 1], [index % 2 === 0 ? -80 : 80, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
@@ -62,7 +67,6 @@ function LeistungSection({ leistung, index }: { leistung: typeof leistungen[0]; 
       className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-b border-[#222222]"
       style={{ x, opacity }}
     >
-      {/* Color block */}
       <div
         className={`relative flex items-end p-12 h-[40vh] overflow-hidden ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
         style={{ backgroundColor: leistung.color }}
@@ -85,7 +89,6 @@ function LeistungSection({ leistung, index }: { leistung: typeof leistungen[0]; 
         />
       </div>
 
-      {/* Items list */}
       <div className={`bg-white p-12 flex flex-col justify-center ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
         <ul className="space-y-4">
           {leistung.items.map((item, i) => (
@@ -116,24 +119,24 @@ export default function LeistungenPage() {
   }, []);
 
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '80%']);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Nav */}
+      {/* Nav – Logo & Links anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#111111]/90 backdrop-blur-md border-b border-white/10">
         <Link href="/" className="text-white font-black text-xl tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-          EMANUEL <span className="text-[#E63329]">MEDIA</span>
+          FIRMEN <span className="text-[#E63329]">NAME</span>
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {[{ label: 'Leistungen', href: '/leistungen' }, { label: 'Über uns', href: '/ueber-uns' }, { label: 'Kontakt', href: '/kontakt' }].map(item => (
             <Link key={item.href} href={item.href} className="text-[#AAAAAA] hover:text-white text-sm tracking-wider transition-colors font-light">{item.label}</Link>
           ))}
-          <a href="https://emanuel-media-shop.de" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.beispiel.de" target="_blank" rel="noopener noreferrer"
             className="px-6 py-3 bg-[#E63329] text-white text-xs font-bold tracking-widest hover:bg-white hover:text-[#E63329] transition-colors">
-            ONLINE-SHOP
+            CTA BUTTON
           </a>
         </div>
       </nav>
@@ -141,18 +144,17 @@ export default function LeistungenPage() {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[70vh] bg-[#111111] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'linear-gradient(#E63329 1px, transparent 1px), linear-gradient(90deg, #E63329 1px, transparent 1px)', backgroundSize: '80px 80px' }}
-        />
+          style={{ backgroundImage: 'linear-gradient(#E63329 1px, transparent 1px), linear-gradient(90deg, #E63329 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#E63329]"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1 }} />
-
         <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity }}>
-          <p className="text-[#E63329] text-xs tracking-[0.4em] font-bold mb-6">EMANUEL MEDIA</p>
+          {/* Seitenüberschrift anpassen */}
+          <p className="text-[#E63329] text-xs tracking-[0.4em] font-bold mb-6">FIRMENNAME</p>
           <h1 className="text-white font-black leading-none tracking-tighter"
             style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 12vw, 12rem)' }}>
             LEIS<span className="text-[#E63329]">TUNGEN</span>
           </h1>
-          <p className="text-[#888888] text-lg mt-6">Druck & Textildruck aus einer Hand</p>
+          <p className="text-[#888888] text-lg mt-6">Kurzer Begleittext zur Leistungsübersicht</p>
         </motion.div>
       </section>
 
@@ -163,7 +165,7 @@ export default function LeistungenPage() {
         ))}
       </div>
 
-      {/* CTA */}
+      {/* CTA – Texte anpassen */}
       <section className="bg-[#E63329] py-32">
         <div className="max-w-[1200px] mx-auto px-6 text-center">
           <motion.h2
@@ -172,8 +174,7 @@ export default function LeistungenPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
             FRAGEN?<br />WIR HELFEN.
           </motion.h2>
           <motion.div className="flex gap-4 justify-center flex-wrap mt-8"
@@ -182,9 +183,9 @@ export default function LeistungenPage() {
             <Link href="/kontakt" className="px-10 py-4 bg-white text-[#E63329] text-sm font-bold tracking-widest hover:bg-[#111111] hover:text-white transition-colors">
               KONTAKT AUFNEHMEN
             </Link>
-            <a href="https://emanuel-media-shop.de" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.beispiel.de" target="_blank" rel="noopener noreferrer"
               className="px-10 py-4 border-2 border-white text-white text-sm font-bold tracking-widest hover:bg-white hover:text-[#E63329] transition-colors">
-              ONLINE-SHOP ↗
+              WEBSITE ↗
             </a>
           </motion.div>
         </div>
@@ -194,9 +195,9 @@ export default function LeistungenPage() {
       <footer className="bg-[#111111] text-white py-12 border-t border-[#222222]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
           <Link href="/" className="text-white font-black text-xl" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-            EMANUEL <span className="text-[#E63329]">MEDIA</span>
+            FIRMEN <span className="text-[#E63329]">NAME</span>
           </Link>
-          <p className="text-xs font-light text-[#555555]">© 2026 Emanuel Media · Annette Emanuel-Decker</p>
+          <p className="text-xs font-light text-[#555555]">© 2026 Firmenname · Inhabername</p>
           <div className="flex gap-6 text-xs font-light text-[#555555]">
             <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
             <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>

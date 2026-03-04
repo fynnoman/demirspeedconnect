@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Emanuel Media – Druck & Textildruck Saarlouis",
-  description: "Emanuel Media – Ihre Druckerei in Saarlouis-Roden. Textildruck, Visitenkarten, Flyer, Bücher, Logoentwicklung und mehr.",
+  title: "Firmenname – Kurzbeschreibung",
+  description: "Kurze Beschreibung des Unternehmens und der Dienstleistungen.",
 };
 
 export default function RootLayout({

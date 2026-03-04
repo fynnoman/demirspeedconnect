@@ -1,19 +1,55 @@
 'use client';
 
+// ============================================================
+// PLATZHALTER-SEITE – alle Inhalte durch echte Daten ersetzen
+// ============================================================
+
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Lenis from 'lenis';
 
+// --- Navigationslinks anpassen ---
+const NAV_LINKS = [
+  { label: 'Leistungen', href: '/leistungen' },
+  { label: 'Über uns', href: '/ueber-uns' },
+  { label: 'Kontakt', href: '/kontakt' },
+];
+
+// --- Leistungen in der Services-Nav anpassen ---
+const SERVICE_WORDS = [
+  { text: 'LEISTUNG 1', href: '/leistungen' },
+  { text: 'LEISTUNG 2', href: '/leistungen' },
+  { text: 'LEISTUNG 3', href: '/leistungen' },
+  { text: 'LEISTUNG 4', href: '/leistungen' },
+  { text: 'LEISTUNG 5', href: '/leistungen' },
+];
+
+// --- Leistungen Grid anpassen ---
+const LEISTUNGEN_ITEMS = [
+  { title: 'LEISTUNG 1', sub: 'Kurze Beschreibung', color: '#E63329', img: '' },
+  { title: 'LEISTUNG 2', sub: 'Kurze Beschreibung', color: '#111111', img: '' },
+  { title: 'LEISTUNG 3', sub: 'Kurze Beschreibung', color: '#1A1A1A', img: '' },
+  { title: 'LEISTUNG 4', sub: 'Kurze Beschreibung', color: '#E63329', img: '' },
+  { title: 'LEISTUNG 5', sub: 'Kurze Beschreibung', color: '#111111', img: '' },
+  { title: 'LEISTUNG 6', sub: 'Kurze Beschreibung', color: '#222222', img: '' },
+];
+
+// --- USP-Karten anpassen ---
+const USP_CARDS = [
+  { number: '01', title: 'USP 1', desc: 'Kurze Beschreibung des Alleinstellungsmerkmals.' },
+  { number: '02', title: 'USP 2', desc: 'Kurze Beschreibung des Alleinstellungsmerkmals.' },
+  { number: '03', title: 'USP 3', desc: 'Kurze Beschreibung des Alleinstellungsmerkmals.' },
+  { number: '04', title: 'USP 4', desc: 'Kurze Beschreibung des Alleinstellungsmerkmals.' },
+];
+
+// --------------- Komponenten ---------------
+
 function ServiceWord({ text, href, index }: { text: string; href: string; index: number }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"]
-  });
-
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
   const direction = index % 2 === 0 ? -1 : 1;
-  const x = useTransform(scrollYProgress, [0, 1], [`${direction * 100}vw`, '0vw']);
+  const x = useTransform(scrollYProgress, [0, 1], [direction * 100 + 'vw', '0vw']);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
 
   return (
@@ -24,10 +60,7 @@ function ServiceWord({ text, href, index }: { text: string; href: string; index:
         style={{ fontFamily: 'Arial Black, Arial, sans-serif', x, opacity }}
       >
         {text}
-        <motion.div
-          className="absolute bottom-1 left-0 right-0 h-3 bg-[#E63329] -z-10"
-          style={{ opacity: 0.35 }}
-        />
+        <motion.div className="absolute bottom-1 left-0 right-0 h-3 bg-[#E63329] -z-10" style={{ opacity: 0.35 }} />
       </motion.a>
     </div>
   );
@@ -35,11 +68,7 @@ function ServiceWord({ text, href, index }: { text: string; href: string; index:
 
 function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '60%']);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
@@ -47,51 +76,42 @@ function HeroSection() {
   return (
     <section ref={heroRef} className="relative h-[180vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-[#111111] flex items-center justify-center">
-        {/* Background image */}
+
+        {/* Hintergrundbild – Pfad unten in img src eintragen und den Kommentar entfernen */}
         <motion.div className="absolute inset-0" style={{ scale: bgScale }}>
-          <img
-            src="/D6C69D06-B386-4386-9CA0-5C80AD993F9D.png"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay so text stays readable */}
-          <div className="absolute inset-0 bg-[#111111]/60" />
+          {/* <img src="/dein-bild.jpg" alt="" className="w-full h-full object-cover" /> */}
+          <div className="absolute inset-0 bg-[#111111]" />
         </motion.div>
 
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#E63329]"
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        />
+          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1.2, ease: 'easeOut' }} />
         <motion.div className="absolute right-0 top-0 w-4 h-full bg-[#E63329]"
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
-        />
+          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }} />
 
         <motion.div className="relative z-10 text-center px-8" style={{ y: titleY, opacity: titleOpacity }}>
+          {/* Claim-Zeile anpassen */}
           <motion.p className="text-[#E63329] text-sm tracking-[0.4em] mb-6 font-bold"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}>
-            DRUCKEREI · TEXTILDRUCK · SAARLOUIS
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+            KATEGORIE · KATEGORIE · ORT
           </motion.p>
 
+          {/* Firmenname anpassen */}
           <motion.h1
             className="text-white leading-none font-black tracking-tighter"
             style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 14vw, 16rem)' }}
-            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.5 }}>
-            EMANUEL<br />
-            <span className="text-[#E63329]">MEDIA</span>
+            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}>
+            FIRMEN<br />
+            <span className="text-[#E63329]">NAME</span>
           </motion.h1>
 
+          {/* Untertitel anpassen */}
           <motion.p className="text-[#888888] text-lg lg:text-2xl mt-8 font-light tracking-wide"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}>
-            Ihr Druck-Partner in Saarlouis-Roden
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
+            Kurzer Slogan oder Beschreibung
           </motion.p>
 
           <motion.div className="mt-12 flex gap-4 justify-center flex-wrap"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}>
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1 }}>
             <Link href="/leistungen" className="px-8 py-4 bg-[#E63329] text-white text-sm font-bold tracking-widest hover:bg-white hover:text-[#E63329] transition-colors">
               LEISTUNGEN
             </Link>
@@ -112,24 +132,15 @@ function HeroSection() {
 }
 
 function ServicesNavSection() {
-  const services = [
-    { text: 'TEXTILDRUCK', href: '/leistungen' },
-    { text: 'VISITENKARTEN', href: '/leistungen' },
-    { text: 'FLYER & BROSCHÜREN', href: '/leistungen' },
-    { text: 'BÜCHER & DIPLOMARBEITEN', href: '/leistungen' },
-    { text: 'BESCHRIFTUNGEN', href: '/leistungen' },
-  ];
-
   return (
     <section className="bg-white py-24">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         <motion.p className="text-[#E63329] text-xs tracking-[0.4em] font-bold mb-12 text-center"
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }} viewport={{ once: true }}>
+          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           UNSERE LEISTUNGEN
         </motion.p>
         <div className="flex flex-col items-center gap-6">
-          {services.map(({ text, href }, index) => (
+          {SERVICE_WORDS.map(({ text, href }, index) => (
             <ServiceWord key={text} text={text} href={href} index={index} />
           ))}
         </div>
@@ -140,7 +151,7 @@ function ServicesNavSection() {
 
 function AboutSection() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const leftX = useTransform(scrollYProgress, [0, 0.5], [-60, 0]);
   const rightX = useTransform(scrollYProgress, [0, 0.5], [60, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
@@ -151,18 +162,20 @@ function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div style={{ x: leftX, opacity }}>
             <p className="text-[#E63329] text-xs tracking-[0.4em] font-bold mb-6">ÜBER UNS</p>
+            {/* Überschrift anpassen */}
             <h2 className="text-white text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
               style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-              DRUCK<br />
-              <span className="text-[#E63329]">MIT</span><br />
-              HERZ
+              ÜBER<br />
+              <span className="text-[#E63329]">SCHRIFT</span><br />
+              HIER
             </h2>
             <div className="w-20 h-1 bg-[#E63329] mb-8" />
+            {/* Texte anpassen */}
             <p className="text-[#AAAAAA] text-lg leading-relaxed font-light">
-              Emanuel Media ist Ihre Druckerei in Saarlouis-Roden – geführt von Annette Emanuel-Decker mit Leidenschaft für Druck und persönlichen Service.
+              Beschreibungstext des Unternehmens hier einfügen. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <p className="text-[#AAAAAA] text-lg leading-relaxed font-light mt-4">
-              Von der Visitenkarte bis zum Buch, vom T-Shirt bis zur Schaufensterbeschriftung – schnell, zuverlässig und zu fairen Preisen. Auch bei kleinen Auflagen.
+              Weitere Informationen über das Unternehmen, Werte und das Angebot hier eintragen.
             </p>
             <Link href="/ueber-uns"
               className="inline-block mt-8 px-8 py-4 border-2 border-[#E63329] text-[#E63329] text-sm font-bold tracking-widest hover:bg-[#E63329] hover:text-white transition-colors">
@@ -171,12 +184,7 @@ function AboutSection() {
           </motion.div>
 
           <motion.div className="grid grid-cols-2 gap-4" style={{ x: rightX, opacity }}>
-            {[
-              { number: '01', title: 'SCHNELL', desc: 'Kurze Lieferzeiten auch bei kleinen Auflagen' },
-              { number: '02', title: 'FAIR', desc: 'Transparente Preise ohne versteckte Kosten' },
-              { number: '03', title: 'KREATIV', desc: 'Logoentwicklung und Gestaltung aus einer Hand' },
-              { number: '04', title: 'LOKAL', desc: 'Ihr Partner vor Ort in Saarlouis-Roden' },
-            ].map((item) => (
+            {USP_CARDS.map((item) => (
               <div key={item.number} className="bg-[#1A1A1A] p-6 border-l-4 border-[#E63329]">
                 <p className="text-[#E63329] text-3xl font-black mb-2" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
                   {item.number}
@@ -193,20 +201,11 @@ function AboutSection() {
 }
 
 function LeistungenGrid() {
-  const items = [
-    { title: 'TEXTILDRUCK', sub: 'T-Shirts, Tassen, Teller & mehr', color: '#E63329', img: '/9E93C480-D3B0-4C55-96FA-99C1B2F34418_1_201_a.jpeg' },
-    { title: 'VEREINSBEDARF', sub: 'Trikots, Aufkleber, Stempel', color: '#111111', img: '/F8A6ABF9-9D6F-4150-A8F1-E80170B5DF2A_1_201_a.jpeg' },
-    { title: 'PRINT', sub: 'Visitenkarten, Flyer, Broschüren', color: '#1A1A1A', img: '/EAC86193-0AB0-4328-9DF4-BC826B5E4101_1_201_a.jpeg' },
-    { title: 'BÜCHER', sub: 'Diplomarbeiten, Kalender, Festschriften', color: '#E63329', img: '/BC54E0F5-CBC5-4ECE-9570-E77310ED7126_1_201_a.jpeg' },
-    { title: 'BESCHRIFTUNG', sub: 'Auto- & Schaufensterbeschriftung', color: '#111111', img: '/692540E2-AFBE-43AD-89BA-3A8947C84BC4_1_201_a.jpeg' },
-    { title: 'STARTUP-PAKET', sub: 'Alles für Existenzgründer', color: '#222222', img: '/CE587E3B-37EE-451E-9B27-1D8068D4580C_1_201_a.jpeg' },
-  ];
-
   return (
     <section className="bg-white">
       <div className="max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, index) => (
+          {LEISTUNGEN_ITEMS.map((item, index) => (
             <LeistungCard key={item.title} item={item} index={index} />
           ))}
         </div>
@@ -217,7 +216,7 @@ function LeistungenGrid() {
 
 function LeistungCard({ item, index }: { item: { title: string; sub: string; color: string; img: string }; index: number }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end center"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end center'] });
   const y = useTransform(scrollYProgress, [0, 1], [80, -40]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
@@ -227,17 +226,22 @@ function LeistungCard({ item, index }: { item: { title: string; sub: string; col
       className="relative h-[50vh] flex items-end p-10 overflow-hidden cursor-pointer group border border-white/5"
       style={{ backgroundColor: item.color, y, opacity }}
     >
-      {/* Background image */}
+      {/* Bild-Platzhalter – img-Pfad in LEISTUNGEN_ITEMS oben eintragen */}
       <div className="absolute inset-0">
-        <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+        {item.img ? (
+          <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center opacity-20">
+            <span className="text-white text-xs tracking-widest">BILD EINFÜGEN</span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-black/50 group-hover:bg-[#E63329]/80 transition-colors duration-500" />
       </div>
       <div className="relative z-10">
         <motion.div className="w-8 h-1 bg-white mb-6"
           initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: index * 0.1 }} viewport={{ once: true }}
-          style={{ transformOrigin: 'left' }}
-        />
+          style={{ transformOrigin: 'left' }} />
         <h3 className="text-white text-4xl lg:text-5xl font-black leading-none tracking-tighter mb-2"
           style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
           {item.title}
@@ -254,15 +258,16 @@ function LeistungCard({ item, index }: { item: { title: string; sub: string; col
 
 function StatementSection() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const x = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
 
   return (
     <section ref={ref} className="bg-[#E63329] py-32 overflow-hidden">
       <motion.div className="whitespace-nowrap" style={{ x }}>
+        {/* Statement-Text anpassen */}
         <h2 className="text-white font-black leading-none"
           style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 12vw, 14rem)' }}>
-          DRUCK&nbsp;·&nbsp;DESIGN&nbsp;·&nbsp;QUALITÄT&nbsp;·&nbsp;
+          WORT 1&nbsp;&middot;&nbsp;WORT 2&nbsp;&middot;&nbsp;WORT 3&nbsp;&middot;&nbsp;
         </h2>
       </motion.div>
     </section>
@@ -271,7 +276,7 @@ function StatementSection() {
 
 function ContactSection() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const y = useTransform(scrollYProgress, [0, 0.4], [60, 0]);
 
@@ -285,12 +290,13 @@ function ContactSection() {
               style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
               SO<br />ERREICHST<br />DU <span className="text-[#E63329]">UNS</span>
             </h2>
+            {/* Kontaktdaten anpassen */}
             <div className="space-y-5 text-[#555555]">
               {[
-                { label: 'ADRESSE', lines: ['Schulstraße 54', '66740 Saarlouis-Roden'] },
-                { label: 'TELEFON', lines: ['06831 – 6456845'], href: 'tel:+4968316456845' },
-                { label: 'E-MAIL', lines: ['info@emanuel-media.de'], href: 'mailto:info@emanuel-media.de' },
-                { label: 'ONLINE-SHOP', lines: ['emanuel-media-shop.de'], href: 'https://emanuel-media-shop.de', external: true },
+                { label: 'ADRESSE', lines: ['Straße Nr.', 'PLZ Ort'] },
+                { label: 'TELEFON', lines: ['00000 – 000000'], href: 'tel:+00000000000' },
+                { label: 'E-MAIL', lines: ['info@beispiel.de'], href: 'mailto:info@beispiel.de' },
+                { label: 'WEBSITE', lines: ['www.beispiel.de'], href: 'https://www.beispiel.de', external: true },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="w-1 min-h-[20px] bg-[#E63329] shrink-0 mt-1" />
@@ -314,7 +320,7 @@ function ContactSection() {
               ANGEBOT ANFRAGEN
             </h3>
             <p className="text-[#888888] mb-8 font-light text-sm">
-              Wir melden uns schnell zurück – auch bei kleinen Auflagen und kurzfristigen Projekten.
+              Kurzer Begleittext zum Kontaktformular.
             </p>
             <div className="space-y-4">
               <input type="text" placeholder="Name"
@@ -348,23 +354,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Navigationslinks → NAV_LINKS oben anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#111111]/90 backdrop-blur-md border-b border-white/10">
+        {/* Logo-Text → anpassen */}
         <Link href="/" className="text-white font-black text-xl tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-          EMANUEL <span className="text-[#E63329]">MEDIA</span>
+          FIRMEN <span className="text-[#E63329]">NAME</span>
         </Link>
         <div className="hidden lg:flex items-center gap-8">
-          {[
-            { label: 'Leistungen', href: '/leistungen' },
-            { label: 'Über uns', href: '/ueber-uns' },
-            { label: 'Kontakt', href: '/kontakt' },
-          ].map((item) => (
+          {NAV_LINKS.map((item) => (
             <Link key={item.href} href={item.href} className="text-[#AAAAAA] hover:text-white text-sm tracking-wider transition-colors font-light">
               {item.label}
             </Link>
           ))}
-          <a href="https://emanuel-media-shop.de" target="_blank" rel="noopener noreferrer"
+          {/* CTA-Button → Link und Text anpassen */}
+          <a href="https://www.beispiel.de" target="_blank" rel="noopener noreferrer"
             className="px-6 py-3 bg-[#E63329] text-white text-xs font-bold tracking-widest hover:bg-white hover:text-[#E63329] transition-colors">
-            ONLINE-SHOP
+            CTA BUTTON
           </a>
         </div>
       </nav>
@@ -376,21 +381,22 @@ export default function Home() {
       <StatementSection />
       <ContactSection />
 
+      {/* Footer – Kontaktdaten anpassen */}
       <footer className="bg-[#111111] text-white py-16 border-t border-[#222222]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
               <h4 className="text-white font-black text-2xl mb-4 tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-                EMANUEL <span className="text-[#E63329]">MEDIA</span>
+                FIRMEN <span className="text-[#E63329]">NAME</span>
               </h4>
               <p className="text-[#888888] text-sm font-light leading-relaxed">
-                Ihre Druckerei in Saarlouis-Roden.<br />Druck & Textildruck für Privat und Gewerbe.
+                Kurze Unternehmensbeschreibung.<br />Leistungsbereich und Zielgruppe.
               </p>
             </div>
             <div>
               <h4 className="text-xs font-bold tracking-[0.3em] text-[#E63329] mb-4">LEISTUNGEN</h4>
               <ul className="space-y-2 text-sm font-light text-[#888888]">
-                {['Textildruck', 'Visitenkarten & Flyer', 'Bücher & Diplomarbeiten', 'Auto- & Schaufensterbeschriftung', 'Startup-Pakete'].map(l => (
+                {['Leistung 1', 'Leistung 2', 'Leistung 3', 'Leistung 4', 'Leistung 5'].map(l => (
                   <li key={l}><Link href="/leistungen" className="hover:text-white transition-colors">{l}</Link></li>
                 ))}
               </ul>
@@ -398,16 +404,16 @@ export default function Home() {
             <div>
               <h4 className="text-xs font-bold tracking-[0.3em] text-[#E63329] mb-4">KONTAKT</h4>
               <div className="space-y-1 text-sm font-light text-[#888888]">
-                <p className="text-white font-bold">Emanuel Media</p>
-                <p>Schulstraße 54, 66740 Saarlouis-Roden</p>
-                <p><a href="tel:+4968316456845" className="hover:text-white transition-colors">06831 – 6456845</a></p>
-                <p><a href="mailto:info@emanuel-media.de" className="hover:text-white transition-colors">info@emanuel-media.de</a></p>
-                <p className="mt-2"><a href="https://emanuel-media-shop.de" target="_blank" rel="noopener noreferrer" className="text-[#E63329] hover:text-white transition-colors">emanuel-media-shop.de ↗</a></p>
+                <p className="text-white font-bold">Firmenname</p>
+                <p>Straße Nr., PLZ Ort</p>
+                <p><a href="tel:+00000000000" className="hover:text-white transition-colors">00000 – 000000</a></p>
+                <p><a href="mailto:info@beispiel.de" className="hover:text-white transition-colors">info@beispiel.de</a></p>
+                <p className="mt-2"><a href="https://www.beispiel.de" target="_blank" rel="noopener noreferrer" className="text-[#E63329] hover:text-white transition-colors">www.beispiel.de ↗</a></p>
               </div>
             </div>
           </div>
           <div className="border-t border-[#222222] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs font-light text-[#555555]">© 2026 Emanuel Media · Annette Emanuel-Decker</p>
+            <p className="text-xs font-light text-[#555555]">© 2026 Firmenname · Inhabername</p>
             <div className="flex gap-6 text-xs font-light text-[#555555]">
               <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
               <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>
