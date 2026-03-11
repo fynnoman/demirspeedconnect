@@ -4,8 +4,8 @@
 // PLATZHALTER-SEITE – alle Inhalte durch echte Daten ersetzen
 // ============================================================
 
-import { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Lenis from 'lenis';
 
@@ -38,6 +38,30 @@ const USP_CARDS = [
   { number: '02', title: 'ERFAHRUNG', desc: 'Jahrelange Expertise in Glasfaser und Tiefbau in ganz Deutschland.' },
   { number: '03', title: 'SCHNELLIGKEIT', desc: 'Effiziente Abwicklung und termingerechte Fertigstellung Ihrer Projekte.' },
   { number: '04', title: 'KOMPETENZ', desc: 'Geschultes Fachpersonal für alle Bereiche der Glasfaser-Infrastruktur.' },
+];
+
+// --- FAQ-Einträge anpassen ---
+const FAQ_ITEMS = [
+  {
+    question: 'Was genau macht Demir SpeedConnect?',
+    answer: 'Wir sind spezialisiert auf den Ausbau von Glasfaser-Infrastruktur: Vom Tiefbau über die Kabelverlegung bis hin zum präzisen Spleißen und Hausanschlüssen – alles aus einer Hand.',
+  },
+  {
+    question: 'Für welche Auftraggeber arbeiten Sie?',
+    answer: 'Wir arbeiten für Netzbetreiber, Kommunen, Bauunternehmen und Privatkunden. Ob Großprojekt oder einzelner Hausanschluss – wir passen uns Ihrem Bedarf an.',
+  },
+  {
+    question: 'In welchen Regionen sind Sie tätig?',
+    answer: 'Unser Hauptstandort ist Beckingen im Saarland. Wir sind jedoch deutschlandweit im Einsatz und übernehmen Projekte in ganz Deutschland.',
+  },
+  {
+    question: 'Wie schnell können Sie ein Projekt starten?',
+    answer: 'Nach einer kurzen Bedarfsabstimmung können wir in der Regel innerhalb weniger Tage mit der Planung beginnen. Schreiben Sie uns oder rufen Sie direkt an.',
+  },
+  {
+    question: 'Wie läuft ein Hausanschluss ab?',
+    answer: 'Zunächst besichtigen wir die Situation vor Ort, dann führen wir die nötigen Tiefbauarbeiten durch, verlegen das Kabel und schließen es fachgerecht an. Der gesamte Prozess dauert je nach Gegebenheit wenige Stunden bis einen Tag.',
+  },
 ];
 
 // --------------- Komponenten ---------------
@@ -251,6 +275,101 @@ function LeistungCard({ item, index }: { item: { title: string; sub: string; col
   );
 }
 
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section className="bg-[#0F172A] py-32">
+      <div className="max-w-[900px] mx-auto px-6 lg:px-12">
+        <motion.p
+          className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-4 text-center"
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }} viewport={{ once: true }}>
+          FAQ
+        </motion.p>
+        <motion.h2
+          className="text-white font-black tracking-tighter text-center mb-16"
+          style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
+          HÄUFIGE <span className="text-[#1D4ED8]">FRAGEN</span>
+        </motion.h2>
+
+        <div className="space-y-0 border-t border-[#1E293B]">
+          {FAQ_ITEMS.map((item, i) => (
+            <motion.div
+              key={i}
+              className="border-b border-[#1E293B]"
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.07 }} viewport={{ once: true }}>
+              <button
+                className="w-full flex items-center justify-between gap-6 py-7 text-left group"
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}>
+                <span className="text-white font-bold text-lg group-hover:text-[#1D4ED8] transition-colors">
+                  {item.question}
+                </span>
+                <motion.div
+                  animate={{ rotate: openIndex === i ? 45 : 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="shrink-0 w-8 h-8 bg-[#1E293B] group-hover:bg-[#1D4ED8] transition-colors flex items-center justify-center">
+                  <svg className="w-4 h-4 text-[#1D4ED8] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                  </svg>
+                </motion.div>
+              </button>
+              <AnimatePresence initial={false}>
+                {openIndex === i && (
+                  <motion.div
+                    key="answer"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden">
+                    <p className="text-[#94A3B8] text-base font-light leading-relaxed pb-7 pr-14">
+                      {item.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ScrollToTopButton() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          key="scrolltop"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#1D4ED8] text-white flex items-center justify-center hover:bg-white hover:text-[#1D4ED8] transition-colors shadow-lg shadow-black/30"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.25 }}
+          aria-label="Nach oben scrollen">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function StatementSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
@@ -379,7 +498,11 @@ export default function Home() {
       <AboutSection />
       <LeistungenGrid />
       <StatementSection />
+      <FaqSection />
       <ContactSection />
+
+      {/* Zurück nach oben */}
+      <ScrollToTopButton />
 
       {/* Footer – Kontaktdaten anpassen */}
       <footer className="bg-[#0F172A] text-white py-16 border-t border-[#1E293B]">
