@@ -63,10 +63,19 @@ export default function KontaktPage() {
 
       {/* Hero */}
       <section ref={heroRef} className="relative h-[60vh] bg-[#0F172A] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/Gemini_Generated_Image_brzc8xbrzc8xbrzc.png" alt="Banner" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#0F172A]/70" />
-        </div>
+        {/* Perspektivisches Rastermuster */}
+        <div className="absolute inset-0 bg-[#0F172A]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+            opacity: 0.15,
+            transform: 'perspective(600px) rotateX(35deg) scale(2)',
+            transformOrigin: '50% 100%',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-[#0F172A]/30" />
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8] z-10"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1 }} />
         <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity }}>
