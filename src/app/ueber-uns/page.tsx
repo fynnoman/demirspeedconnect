@@ -37,8 +37,8 @@ export default function UeberUns() {
     <div className="min-h-screen bg-white">
       {/* Nav – Logo & Links anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
-        <Link href="/" className="text-white font-black text-xl tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-          DEMIR <span className="text-[#1D4ED8]">SPEEDCONNECT</span>
+        <Link href="/">
+          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {[{ label: 'Leistungen', href: '/leistungen' }, { label: 'Über uns', href: '/ueber-uns' }, { label: 'Kontakt', href: '/kontakt' }].map(item => (
@@ -189,8 +189,8 @@ export default function UeberUns() {
       {/* Footer */}
       <footer className="bg-[#0F172A] text-white py-12 border-t border-[#1E293B]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link href="/" className="text-white font-black text-xl" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-            DEMIR <span className="text-[#1D4ED8]">SPEEDCONNECT</span>
+          <Link href="/">
+            <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
           </Link>
           <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">

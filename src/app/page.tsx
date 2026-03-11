@@ -476,8 +476,8 @@ export default function Home() {
       {/* Navigationslinks → NAV_LINKS oben anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         {/* Logo-Text → anpassen */}
-        <Link href="/" className="text-white font-black text-xl tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-          DEMIR <span className="text-[#1D4ED8]">SPEEDCONNECT</span>
+        <Link href="/">
+          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
@@ -509,9 +509,9 @@ export default function Home() {
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
-              <h4 className="text-white font-black text-2xl mb-4 tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-                DEMIR <span className="text-[#1D4ED8]">SPEEDCONNECT</span>
-              </h4>
+              <Link href="/">
+              <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
+            </Link>
               <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
                 Ihr Spezialist für Glasfaser-Infrastruktur,<br />Tiefbau und Hausanschlüsse.
               </p>
