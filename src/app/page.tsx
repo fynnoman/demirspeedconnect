@@ -111,12 +111,6 @@ function HeroSection() {
 
         <motion.div className="relative z-10 text-center px-8" style={{ y: titleY, opacity: titleOpacity }}>
           {/* Claim-Zeile anpassen */}
-          <motion.p className="text-[#1D4ED8] text-sm tracking-[0.4em] mb-6 font-bold"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
-            GLASFASER · TIEFBAU · DEUTSCHLAND
-          </motion.p>
-
-          {/* Firmenname anpassen */}
           <motion.img
             src="/AB257105-9CE0-457F-8EA2-47E07C066099.png"
             alt="Demir SpeedConnect"
@@ -124,10 +118,9 @@ function HeroSection() {
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
           />
 
-          {/* Untertitel anpassen */}
-          <motion.p className="text-[#94A3B8] text-lg lg:text-2xl mt-8 font-light tracking-wide"
+          <motion.p className="text-[#1D4ED8] text-sm tracking-[0.4em] mt-6 font-bold"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
-            Ihr Spezialist für Glasfaser-Infrastruktur & Tiefbau
+            GLASFASER · TIEFBAU · DEUTSCHLAND
           </motion.p>
 
           <motion.div className="mt-12 flex gap-4 justify-center flex-wrap"
