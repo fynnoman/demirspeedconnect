@@ -101,12 +101,6 @@ function HeroSection() {
             <span className="text-[#1D4ED8]">SPEED</span>CONNECT
           </motion.h1>
 
-          {/* Untertitel anpassen */}
-          <motion.p className="text-[#94A3B8] text-lg lg:text-2xl mt-8 font-light tracking-wide"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
-            Ihr Spezialist für Glasfaser-Infrastruktur & Tiefbau
-          </motion.p>
-
           <motion.div className="mt-12 flex gap-4 justify-center flex-wrap"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1 }}>
             <Link href="/leistungen" className="px-8 py-4 bg-[#1D4ED8] text-white text-sm font-bold tracking-widest hover:bg-white hover:text-[#1D4ED8] transition-colors">
