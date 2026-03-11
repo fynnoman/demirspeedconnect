@@ -133,6 +133,36 @@ export default function KontaktPage() {
               ✉️ info@speedconnect-demir.de
             </a>
           </motion.div>
+
+          {/* Google Maps Karte */}
+          <motion.a
+            href="https://www.google.com/maps/search/?api=1&query=Talstraße+67,+66701+Beckingen"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block relative overflow-hidden mt-12"
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }} viewport={{ once: true }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2584.1!2d6.758!3d49.448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796b4a11b2d1a13%3A0x0!2sTalstra%C3%9Fe+67%2C+66701+Beckingen!5e0!3m2!1sde!2sde!4v1710000000000"
+              className="w-full h-[420px] border-0 grayscale group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="absolute inset-0 bg-[#0F172A]/20 group-hover:bg-transparent transition-all duration-500 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 bg-[#0F172A] p-6 flex items-center justify-between">
+              <div>
+                <p className="text-[#1D4ED8] text-xs font-bold tracking-[0.3em] mb-1">STANDORT</p>
+                <p className="text-white font-black text-lg tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>Talstraße 67, 66701 Beckingen</p>
+              </div>
+              <div className="w-10 h-10 bg-[#1D4ED8] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
+            </div>
+          </motion.a>
         </div>
       </section>
 
