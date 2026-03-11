@@ -217,7 +217,7 @@ function AboutSection() {
 
 function LeistungenGrid() {
   return (
-    <section className="bg-white">
+    <section className="bg-[#0F172A] overflow-hidden">
       <div className="max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {LEISTUNGEN_ITEMS.map((item, index) => (
@@ -232,7 +232,7 @@ function LeistungenGrid() {
 function LeistungCard({ item, index }: { item: { title: string; sub: string; color: string; img: string }; index: number }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end center'] });
-  const y = useTransform(scrollYProgress, [0, 1], [80, -40]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -40]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
