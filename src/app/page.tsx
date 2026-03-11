@@ -170,8 +170,11 @@ function AboutSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={ref} className="bg-[#0F172A] py-32 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <section ref={ref} className="bg-[#0F172A] py-32 overflow-hidden relative">
+      {/* Rastermuster Hintergrund */}
+      <div className="absolute inset-0 opacity-[0.07]"
+        style={{ backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div style={{ x: leftX, opacity }}>
             <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">ÜBER UNS</p>
