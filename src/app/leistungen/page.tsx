@@ -1,19 +1,14 @@
 'use client';
 
-// ============================================================
-// PLATZHALTER – Leistungen-Seite
-// ============================================================
-
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Lenis from 'lenis';
 
-// --- Leistungen hier eintragen ---
 const leistungen = [
   {
-    category: 'GLASFASER­VERLEGUNG',
-    icon: '�',
+    category: 'GLASFASERVERLEGUNG',
+    img: '/Gemini_Generated_Image_s8jcjes8jcjes8jc.png',
     items: [
       'Verlegung von Glasfaserkabeln im Innen- und Außenbereich',
       'LWL-Kabelverlegung in Leerrohren',
@@ -27,7 +22,7 @@ const leistungen = [
   },
   {
     category: 'SPLEISSEN',
-    icon: '⚡',
+    img: '/Gemini_Generated_Image_6o6esl6o6esl6o6e.png',
     items: [
       'Thermisches Spleißen von Lichtwellenleitern',
       'Spleißen nach Industrie-Standard',
@@ -40,8 +35,8 @@ const leistungen = [
     color: '#0F172A',
   },
   {
-    category: 'TIEFBAU­ARBEITEN',
-    icon: '🔧',
+    category: 'TIEFBAUARBEITEN',
+    img: '/Gemini_Generated_Image_50z0uv50z0uv50z0.png',
     items: [
       'Grabenlose Verlegung (Spülbohrung)',
       'Offene Tiefbauarbeiten',
@@ -54,8 +49,8 @@ const leistungen = [
     color: '#1E293B',
   },
   {
-    category: 'HAUS­ANSCHLÜSSE',
-    icon: '🏠',
+    category: 'HAUSANSCHLUESSE',
+    img: '/D99C6DF0-600D-49E6-9FCE-31C38A04EC70.png',
     items: [
       'Hauseinführung und Kabelzug',
       'Installation des Hausübergabepunkts (HÜP)',
@@ -82,9 +77,13 @@ function LeistungSection({ leistung, index }: { leistung: typeof leistungen[0]; 
       style={{ x, opacity }}
     >
       <div
-        className={`relative flex items-end p-12 h-[40vh] overflow-hidden ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
+        className={`relative flex items-end p-12 h-[50vh] overflow-hidden ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
         style={{ backgroundColor: leistung.color }}
       >
+        <div className="absolute inset-0">
+          <img src={leistung.img} alt={leistung.category} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
         <div className="relative z-10">
           <p className="text-white/40 text-7xl font-black mb-4" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
             {String(index + 1).padStart(2, '0')}
@@ -139,7 +138,6 @@ export default function LeistungenPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Nav – Logo & Links anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         <Link href="/" className="text-white font-black text-xl tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
           DEMIR <span className="text-[#1D4ED8]">SPEEDCONNECT</span>
@@ -148,14 +146,12 @@ export default function LeistungenPage() {
           {[{ label: 'Leistungen', href: '/leistungen' }, { label: 'Über uns', href: '/ueber-uns' }, { label: 'Kontakt', href: '/kontakt' }].map(item => (
             <Link key={item.href} href={item.href} className="text-[#94A3B8] hover:text-white text-sm tracking-wider transition-colors font-light">{item.label}</Link>
           ))}
-          <a href="/kontakt"
-            className="px-6 py-3 bg-[#1D4ED8] text-white text-xs font-bold tracking-widest hover:bg-white hover:text-[#1D4ED8] transition-colors">
+          <a href="/kontakt" className="px-6 py-3 bg-[#1D4ED8] text-white text-xs font-bold tracking-widest hover:bg-white hover:text-[#1D4ED8] transition-colors">
             ANGEBOT ANFRAGEN
           </a>
         </div>
       </nav>
 
-      {/* Hero */}
       <section ref={heroRef} className="relative h-[70vh] bg-[#0F172A] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
@@ -171,14 +167,12 @@ export default function LeistungenPage() {
         </motion.div>
       </section>
 
-      {/* Leistungen */}
       <div>
         {leistungen.map((l, i) => (
           <LeistungSection key={l.category} leistung={l} index={i} />
         ))}
       </div>
 
-      {/* CTA – Texte anpassen */}
       <section className="bg-[#1D4ED8] py-32">
         <div className="max-w-[1200px] mx-auto px-6 text-center">
           <motion.h2
@@ -200,7 +194,6 @@ export default function LeistungenPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-[#0F172A] text-white py-12 border-t border-[#1E293B]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
           <Link href="/" className="text-white font-black text-xl" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
