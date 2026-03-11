@@ -63,19 +63,19 @@ export default function KontaktPage() {
 
       {/* Hero */}
       <section ref={heroRef} className="relative h-[60vh] bg-[#0F172A] flex items-center justify-center overflow-hidden">
-        {/* Perspektivisches Rastermuster */}
-        <div className="absolute inset-0 bg-[#0F172A]" />
-        <div
-          className="absolute inset-0"
+        {/* Punkte-Raster */}
+        <div className="absolute inset-0"
           style={{
-            backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-            opacity: 0.15,
-            transform: 'perspective(600px) rotateX(35deg) scale(2)',
-            transformOrigin: '50% 100%',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-[#0F172A]/30" />
+            backgroundImage: 'radial-gradient(circle, #1D4ED8 1.5px, transparent 1.5px)',
+            backgroundSize: '36px 36px',
+            opacity: 0.25,
+          }} />
+        {/* Blaues Licht von unten Mitte – wie ein Scheinwerfer */}
+        <div className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 110%, rgba(29,78,216,0.6) 0%, rgba(29,78,216,0.15) 50%, transparent 70%)' }} />
+        {/* Horizontale Scan-Linie */}
+        <div className="absolute left-0 right-0 h-px bg-[#1D4ED8]/30" style={{ top: '55%' }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-[#0F172A]/60" />
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8] z-10"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1 }} />
         <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity }}>

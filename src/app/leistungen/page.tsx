@@ -153,10 +153,28 @@ export default function LeistungenPage() {
       </nav>
 
       <section ref={heroRef} className="relative h-[70vh] bg-[#0F172A] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+        {/* Diagonale Bau-Streifen */}
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(45deg, #1D4ED8 0px, #1D4ED8 2px, transparent 2px, transparent 60px)',
+            opacity: 0.12,
+          }} />
+        {/* Zweite Ebene: engere diagonale Linien versetzt */}
+        <div className="absolute inset-0"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(-45deg, #1D4ED8 0px, #1D4ED8 1px, transparent 1px, transparent 40px)',
+            opacity: 0.06,
+          }} />
+        {/* Blaues Licht von unten links */}
+        <div className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 70% 60% at 10% 100%, rgba(29,78,216,0.45) 0%, transparent 70%)' }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-[#0F172A]/50" />
+        {/* Linker blauer Balken */}
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8]"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1 }} />
+        {/* Rechter blauer Balken */}
+        <motion.div className="absolute right-0 top-0 w-1 h-full bg-[#1D4ED8]/40"
+          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1, delay: 0.2 }} />
         <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity }}>
           <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">DEMIR SPEEDCONNECT</p>
           <h1 className="text-white font-black leading-none tracking-tighter"

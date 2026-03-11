@@ -53,19 +53,20 @@ export default function UeberUns() {
 
       {/* Hero */}
       <section ref={heroRef} className="relative h-[70vh] bg-[#0F172A] flex items-center justify-center overflow-hidden">
-        {/* Perspektivisches Rastermuster */}
-        <div className="absolute inset-0 bg-[#0F172A]" />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-            opacity: 0.15,
-            transform: 'perspective(600px) rotateX(35deg) scale(2)',
-            transformOrigin: '50% 100%',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-[#0F172A]/30" />
+        {/* Konzentrische Kreise – Signalwellen */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {[200, 360, 520, 680, 840, 1000, 1160].map((size) => (
+            <div
+              key={size}
+              className="absolute rounded-full border border-[#1D4ED8]"
+              style={{ width: size, height: size, opacity: Math.max(0.03, 0.22 - size * 0.00015) }}
+            />
+          ))}
+        </div>
+        {/* Helles Zentrum-Glühen */}
+        <div className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(29,78,216,0.30) 0%, rgba(29,78,216,0.08) 40%, transparent 70%)' }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-[#0F172A]/40" />
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8] z-10"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1 }} />
         <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity }}>
