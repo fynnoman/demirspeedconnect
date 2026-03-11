@@ -1,0 +1,18 @@
+{
+  "name": "Demir SpeedConnect",
+  "short_name": "SpeedConnect",
+  "description": "Glasfaserverlegung, Spleißen, Tiefbau und Hausanschlüsse – Demir SpeedConnect UG",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#1D4ED8",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/AB257105-9CE0-457F-8EA2-47E07C066099.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,16 +1,23 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function Impressum() {
   return (
     <div className="min-h-screen bg-white">
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
-        <a href="/">
-          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
-        </a>
+        <Link href="/">
+          <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={140} height={40} priority className="h-10 w-auto object-contain" />
+        </Link>
         <div className="hidden lg:flex items-center gap-8">
           {[{ label: 'Leistungen', href: '/leistungen' }, { label: 'Über uns', href: '/ueber-uns' }, { label: 'Kontakt', href: '/kontakt' }].map(item => (
-            <a key={item.href} href={item.href} className="text-[#94A3B8] hover:text-white text-sm tracking-wider transition-colors font-light">{item.label}</a>
+            <Link key={item.href} href={item.href} className="text-[#94A3B8] hover:text-white text-sm tracking-wider transition-colors font-light">{item.label}</Link>
           ))}
+          <Link href="/kontakt"
+            className="px-6 py-3 bg-[#1D4ED8] text-white text-xs font-bold tracking-widest hover:bg-white hover:text-[#1D4ED8] transition-colors">
+            ANGEBOT ANFRAGEN
+          </Link>
         </div>
       </nav>
 
@@ -21,49 +28,122 @@ export default function Impressum() {
           IMPRESSUM
         </h1>
 
-        <div className="space-y-8 text-[#475569]">
+        <div className="space-y-10 text-[#475569]">
+
           <div>
-            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-3">ANGABEN GEMÄSS § 5 TMG</h2>
-            <div className="border-l-2 border-[#1D4ED8] pl-4 space-y-1 text-sm font-light">
-              <p className="text-[#0F172A] font-bold">Demir SpeedConnect</p>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">ANGABEN GEMÄSS § 5 TMG</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
+              <p className="text-[#0F172A] font-bold">Demir SpeedConnect UG (haftungsbeschränkt)</p>
               <p>Talstraße 67</p>
               <p>66701 Beckingen</p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-3">KONTAKT</h2>
-            <div className="border-l-2 border-[#1D4ED8] pl-4 space-y-1 text-sm font-light">
-              <p>Telefon: <a href="tel:01737366820" className="hover:text-[#1D4ED8] transition-colors">01737366820</a></p>
-              <p>E-Mail: <a href="mailto:info@speedconnect-demir.de" className="hover:text-[#1D4ED8] transition-colors">info@speedconnect-demir.de</a></p>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">HANDELSREGISTER</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
+              <p>Handelsregister: <span className="text-[#0F172A] font-semibold">HRB 111710</span></p>
+              <p>Registergericht: Amtsgericht Saarbrücken</p>
+              <p>Vertreten durch: <span className="text-[#0F172A] font-semibold">Adem Demir</span> (Geschäftsführer)</p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-3">VERANTWORTLICH FÜR DEN INHALT</h2>
-            <div className="border-l-2 border-[#1D4ED8] pl-4 text-sm font-light">
-              <p>Demir SpeedConnect, Talstraße 67, 66701 Beckingen</p>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">KONTAKT</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
+              <p>Telefon: <a href="tel:01737366820" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">0173 7366820</a></p>
+              <p>E-Mail: <a href="mailto:info@speedconnect-demir.de" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">info@speedconnect-demir.de</a></p>
+              <p>Website: <a href="https://demir-speedconnect.de" className="hover:text-[#1D4ED8] transition-colors">https://demir-speedconnect.de</a></p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-3">HAFTUNGSAUSSCHLUSS</h2>
-            <div className="border-l-2 border-[#1D4ED8] pl-4 text-sm font-light leading-relaxed">
-              <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">UMSATZSTEUER-ID / STEUERNUMMER</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 text-sm font-light leading-relaxed">
+              <p>
+                Die Steuernummer wird aus Sicherheitsgründen und zum Schutz vor Missbrauch nicht öffentlich angezeigt,
+                kann jedoch auf berechtigte Anfrage jederzeit mitgeteilt werden.
+              </p>
             </div>
           </div>
+
+          <div>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">REDAKTIONELL VERANTWORTLICH GEMÄSS § 18 ABS. 2 MSTV</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
+              <p className="text-[#0F172A] font-semibold">Adem Demir</p>
+              <p>Talstraße 67</p>
+              <p>66701 Beckingen</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">EU-STREITSCHLICHTUNG</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 text-sm font-light leading-relaxed space-y-2">
+              <p>
+                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
+                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer"
+                  className="text-[#1D4ED8] hover:underline">
+                  https://ec.europa.eu/consumers/odr/
+                </a>
+              </p>
+              <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">VERBRAUCHERSTREITBEILEGUNG / UNIVERSALSCHLICHTUNGSSTELLE</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 text-sm font-light leading-relaxed">
+              <p>
+                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+                Verbraucherschlichtungsstelle teilzunehmen.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">RECHTLICHE HINWEISE</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-5 text-sm font-light leading-relaxed">
+              <div>
+                <p className="text-[#0F172A] font-semibold mb-1">Haftung für Inhalte</p>
+                <p>
+                  Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den
+                  allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                  verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+                  zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                </p>
+              </div>
+              <div>
+                <p className="text-[#0F172A] font-semibold mb-1">Haftung für Links</p>
+                <p>
+                  Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss
+                  haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte
+                  der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                </p>
+              </div>
+              <div>
+                <p className="text-[#0F172A] font-semibold mb-1">Urheberrecht</p>
+                <p>
+                  Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                  deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung
+                  außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen
+                  Autors bzw. Erstellers.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <footer className="bg-[#0F172A] text-white py-12 border-t border-[#1E293B]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
-          <a href="/">
-            <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
-          </a>
-          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect</p>
+          <Link href="/">
+            <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
+          </Link>
+          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">
-            <a href="/impressum" className="hover:text-white transition-colors">Impressum</a>
-            <a href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</a>
+            <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
+            <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>
           </div>
         </div>
       </footer>

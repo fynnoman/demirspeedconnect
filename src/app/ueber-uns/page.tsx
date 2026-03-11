@@ -211,7 +211,7 @@ export default function UeberUns() {
           <Link href="/">
             <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
           </Link>
-          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect</p>
+          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">
             <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
             <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>

@@ -53,7 +53,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'In welchen Regionen sind Sie tätig?',
-    answer: 'Unser Hauptstandort ist Beckingen im Saarland. Wir sind jedoch deutschlandweit im Einsatz und übernehmen Projekte in ganz Deutschland.',
+    answer: 'Unser Hauptstandort ist Beckingen im Saarland. Wir sind vorwiegend im Saarland tätig und übernehmen Projekte in der gesamten Region.',
   },
   {
     question: 'Wie schnell können Sie ein Projekt starten?',
@@ -470,6 +470,59 @@ function ContactSection() {
   );
 }
 
+const SCHEMA_LD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://demir-speedconnect.de",
+  "name": "Demir SpeedConnect UG (haftungsbeschränkt)",
+  "alternateName": "Demir SpeedConnect",
+  "description": "Professionelle Glasfaserverlegung, LWL-Spleißen, Tiefbauarbeiten und Glasfaser-Hausanschlüsse – deutschlandweit tätig.",
+  "url": "https://demir-speedconnect.de",
+  "logo": "https://demir-speedconnect.de/AB257105-9CE0-457F-8EA2-47E07C066099.png",
+  "image": "https://demir-speedconnect.de/og-image.png",
+  "telephone": "+4917373668200",
+  "email": "info@speedconnect-demir.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Talstraße 67",
+    "addressLocality": "Beckingen",
+    "postalCode": "66701",
+    "addressCountry": "DE",
+    "addressRegion": "Saarland"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.448,
+    "longitude": 6.758
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Deutschland"
+  },
+  "priceRange": "€€",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Leistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Glasfaserverlegung" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LWL-Spleißen" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tiefbauarbeiten" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Glasfaser-Hausanschlüsse" } }
+    ]
+  },
+  "sameAs": [
+    "https://demir-speedconnect.de"
+  ]
+};
+
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -485,6 +538,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA_LD) }}
+      />
       {/* Navigationslinks → NAV_LINKS oben anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         {/* Logo-Text → anpassen */}
@@ -548,7 +605,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-[#1E293B] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect</p>
+            <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
             <div className="flex gap-6 text-xs font-light text-[#475569]">
               <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
               <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>

@@ -311,7 +311,7 @@ export default function KontaktPage() {
 						/>
 					</Link>
 					<p className="text-xs font-light text-[#475569]">
-						© 2026 Demir SpeedConnect
+						© 2026 Demir SpeedConnect UG (haftungsbeschränkt)
 					</p>
 					<div className="flex gap-6 text-xs font-light text-[#475569]">
 						<Link
