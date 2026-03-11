@@ -67,6 +67,45 @@ const FAQ_ITEMS = [
 
 // --------------- Komponenten ---------------
 
+function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  return (
+    <AnimatePresence>
+      {open && (
+        <>
+          <motion.div
+            className="fixed inset-0 bg-black/60 z-40"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
+          <motion.div
+            className="fixed top-0 right-0 h-full w-72 bg-[#0F172A] z-50 flex flex-col p-8 border-l border-[#1E293B]"
+            initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+          >
+            <button onClick={onClose} className="self-end mb-10 text-[#94A3B8] hover:text-white">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <nav className="flex flex-col gap-6">
+              {NAV_LINKS.map((item) => (
+                <Link key={item.href} href={item.href} onClick={onClose}
+                  className="text-white text-xl font-bold tracking-wider border-b border-[#1E293B] pb-4 hover:text-[#1D4ED8] transition-colors">
+                  {item.label}
+                </Link>
+              ))}
+              <a href="/kontakt" onClick={onClose}
+                className="mt-4 px-6 py-4 bg-[#1D4ED8] text-white text-sm font-bold tracking-widest text-center hover:bg-white hover:text-[#1D4ED8] transition-colors">
+                ANGEBOT ANFRAGEN
+              </a>
+            </nav>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function ServiceWord({ text, href, index }: { text: string; href: string; index: number }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
@@ -78,11 +117,11 @@ function ServiceWord({ text, href, index }: { text: string; href: string; index:
     <div ref={ref} className="w-full flex justify-center">
       <motion.a
         href={href}
-        className="relative text-[#0F172A] text-5xl lg:text-7xl font-black hover:text-[#1D4ED8] transition-colors tracking-tight"
+        className="relative text-[#0F172A] text-3xl sm:text-5xl lg:text-7xl font-black hover:text-[#1D4ED8] transition-colors tracking-tight"
         style={{ fontFamily: 'Arial Black, Arial, sans-serif', x, opacity }}
       >
         {text}
-        <motion.div className="absolute bottom-1 left-0 right-0 h-3 bg-[#1D4ED8] -z-10" style={{ opacity: 0.35 }} />
+        <motion.div className="absolute bottom-1 left-0 right-0 h-2 lg:h-3 bg-[#1D4ED8] -z-10" style={{ opacity: 0.35 }} />
       </motion.a>
     </div>
   );
@@ -161,13 +200,13 @@ function HeroSection() {
 
 function ServicesNavSection() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white py-16 lg:py-24 overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-        <motion.p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-12 text-center"
+        <motion.p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-8 lg:mb-12 text-center"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           UNSERE LEISTUNGEN
         </motion.p>
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-4 lg:gap-6">
           {SERVICE_WORDS.map(({ text, href }, index) => (
             <ServiceWord key={text} text={text} href={href} index={index} />
           ))}
@@ -185,26 +224,25 @@ function AboutSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={ref} className="bg-[#0F172A] py-32 overflow-hidden relative">
+    <section ref={ref} className="bg-[#0F172A] py-20 lg:py-32 overflow-hidden relative">
       {/* Rastermuster Hintergrund */}
       <div className="absolute inset-0 opacity-[0.07]"
         style={{ backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div style={{ x: leftX, opacity, willChange: 'transform, opacity' }}>
             <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">ÜBER UNS</p>
-            {/* Überschrift anpassen */}
-            <h2 className="text-white text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
+            <h2 className="text-white text-5xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
               style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
               DEMIR<br />
               <span className="text-[#1D4ED8]">SPEED</span><br />
               CONNECT
             </h2>
             <div className="w-20 h-1 bg-[#1D4ED8] mb-8" />
-            <p className="text-[#94A3B8] text-lg leading-relaxed font-light">
+            <p className="text-[#94A3B8] text-base lg:text-lg leading-relaxed font-light">
               Demir SpeedConnect ist Ihr zuverlässiger Partner für den Ausbau der Glasfaser-Infrastruktur. Wir verlegen Glasfaserkabel, führen präzises Spleißen durch und realisieren Tiefbauarbeiten auf höchstem Niveau.
             </p>
-            <p className="text-[#94A3B8] text-lg leading-relaxed font-light mt-4">
+            <p className="text-[#94A3B8] text-base lg:text-lg leading-relaxed font-light mt-4">
               Von der Planung bis zum Hausanschluss – wir liefern schnelle, saubere und nachhaltige Arbeit für Netzbetreiber, Kommunen und Privatkunden.
             </p>
             <Link href="/ueber-uns"
@@ -213,13 +251,13 @@ function AboutSection() {
             </Link>
           </motion.div>
 
-          <motion.div className="grid grid-cols-2 gap-4" style={{ x: rightX, opacity, willChange: 'transform, opacity' }}>
+          <motion.div className="grid grid-cols-2 gap-3 lg:gap-4" style={{ x: rightX, opacity, willChange: 'transform, opacity' }}>
             {USP_CARDS.map((item) => (
-              <div key={item.number} className="bg-[#1E293B] p-6 border-l-4 border-[#1D4ED8]">
-                <p className="text-[#1D4ED8] text-3xl font-black mb-2" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
+              <div key={item.number} className="bg-[#1E293B] p-4 lg:p-6 border-l-4 border-[#1D4ED8]">
+                <p className="text-[#1D4ED8] text-2xl lg:text-3xl font-black mb-2" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
                   {item.number}
                 </p>
-                <h4 className="text-white text-sm font-bold tracking-widest mb-2">{item.title}</h4>
+                <h4 className="text-white text-xs font-bold tracking-widest mb-2">{item.title}</h4>
                 <p className="text-[#94A3B8] text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -247,7 +285,7 @@ function LeistungenGrid() {
 function LeistungCard({ item, index }: { item: { title: string; sub: string; color: string; img: string }; index: number }) {
   return (
     <div
-      className="relative h-[60vh] flex items-end p-7 overflow-hidden cursor-pointer group border border-white/5"
+      className="relative h-[50vh] lg:h-[60vh] flex items-end p-5 lg:p-7 overflow-hidden cursor-pointer group border border-white/5"
       style={{ backgroundColor: item.color }}
     >
       <div className="absolute inset-0">
@@ -290,7 +328,7 @@ function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#0F172A] py-32">
+    <section className="bg-[#0F172A] py-20 lg:py-32">
       <div className="max-w-[900px] mx-auto px-6 lg:px-12">
         <motion.p
           className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-4 text-center"
@@ -387,7 +425,7 @@ function StatementSection() {
   const x = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
 
   return (
-    <section ref={ref} className="bg-[#1D4ED8] py-32 overflow-hidden">
+    <section ref={ref} className="bg-[#1D4ED8] py-20 lg:py-32 overflow-hidden">
       <motion.div className="whitespace-nowrap" style={{ x, willChange: 'transform' }}>
         {/* Statement-Text anpassen */}
         <h2 className="text-white font-black leading-none"
@@ -406,12 +444,12 @@ function ContactSection() {
   const y = useTransform(scrollYProgress, [0, 0.4], [60, 0]);
 
   return (
-    <section ref={ref} className="bg-white py-32">
+    <section ref={ref} className="bg-white py-20 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start" style={{ opacity, y }}>
+        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start" style={{ opacity, y }}>
           <div>
             <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">KONTAKT</p>
-            <h2 className="text-[#0F172A] text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
+            <h2 className="text-[#0F172A] text-4xl sm:text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
               style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
               SO<br />ERREICHST<br />DU <span className="text-[#1D4ED8]">UNS</span>
             </h2>
@@ -524,6 +562,8 @@ const SCHEMA_LD = {
 };
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 0.9,
@@ -542,11 +582,12 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA_LD) }}
       />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
       {/* Navigationslinks → NAV_LINKS oben anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         {/* Logo-Text → anpassen */}
         <Link href="/">
-          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-16 w-auto object-contain" />
+          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 lg:h-16 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
@@ -560,6 +601,15 @@ export default function Home() {
             ANGEBOT ANFRAGEN
           </a>
         </div>
+        <button
+          className="lg:hidden text-white p-2"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Menü öffnen"
+        >
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </nav>
 
       <HeroSection />
