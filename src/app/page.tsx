@@ -308,26 +308,32 @@ function ContactSection() {
             </div>
           </div>
 
-          <div className="bg-[#0F172A] p-12">
-            <h3 className="text-white text-3xl font-black tracking-tighter mb-4"
-              style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
-              ANGEBOT ANFRAGEN
-            </h3>
-            <p className="text-[#94A3B8] mb-8 font-light text-sm">
-              Schreiben Sie uns – wir melden uns schnellstmöglich bei Ihnen.
-            </p>
-            <div className="space-y-4">
-              <input type="text" placeholder="Name"
-                className="w-full px-4 py-4 bg-[#1E293B] border border-[#334155] text-white placeholder-[#475569] outline-none focus:border-[#1D4ED8] transition-colors" />
-              <input type="email" placeholder="E-Mail"
-                className="w-full px-4 py-4 bg-[#1E293B] border border-[#334155] text-white placeholder-[#475569] outline-none focus:border-[#1D4ED8] transition-colors" />
-              <textarea placeholder="Ihre Anfrage" rows={4}
-                className="w-full px-4 py-4 bg-[#1E293B] border border-[#334155] text-white placeholder-[#475569] outline-none focus:border-[#1D4ED8] transition-colors resize-none" />
-              <button className="w-full py-4 bg-[#1D4ED8] text-white font-bold tracking-widest hover:bg-white hover:text-[#1D4ED8] transition-colors text-sm">
-                ABSENDEN
-              </button>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Talstraße+67,+66701+Beckingen"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block relative overflow-hidden h-full min-h-[420px]"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2584.1!2d6.758!3d49.448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796b4a11b2d1a13%3A0x0!2sTalstra%C3%9Fe+67%2C+66701+Beckingen!5e0!3m2!1sde!2sde!4v1710000000000"
+              className="w-full h-full min-h-[420px] border-0 grayscale group-hover:grayscale-0 transition-all duration-500"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="absolute inset-0 bg-[#0F172A]/20 group-hover:bg-transparent transition-all duration-500 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 bg-[#0F172A] p-6 flex items-center justify-between">
+              <div>
+                <p className="text-[#1D4ED8] text-xs font-bold tracking-[0.3em] mb-1">STANDORT</p>
+                <p className="text-white font-black text-lg tracking-tight" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>Talstraße 67, 66701 Beckingen</p>
+              </div>
+              <div className="w-10 h-10 bg-[#1D4ED8] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
             </div>
-          </div>
+          </a>
         </motion.div>
       </div>
     </section>
