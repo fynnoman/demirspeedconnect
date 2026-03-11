@@ -94,30 +94,17 @@ export default function UeberUns() {
             </motion.div>
 
             <motion.div
-              className="grid grid-cols-2 gap-6"
+              className="flex items-center justify-center"
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9 }}
               viewport={{ once: true }}
             >
-              {[
-                { title: 'QUALITÄT', desc: 'Höchste Verarbeitungsqualität bei jedem Meter Glasfaser.' },
-                { title: 'PRÄZISION', desc: 'Spleißen und Montage nach Industrie-Standard.' },
-                { title: 'ZUVERLÄSSIGKEIT', desc: 'Termingerechte Ausführung und saubere Baustellen.' },
-                { title: 'KOMPETENZ', desc: 'Erfahrenes Fachpersonal für alle Tiefbau- und Glasfaser-Leistungen.' },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className="bg-[#0F172A] p-8 border-b-4 border-[#1D4ED8]"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <h4 className="text-[#1D4ED8] font-black text-sm tracking-widest mb-3">{item.title}</h4>
-                  <p className="text-[#94A3B8] text-sm leading-relaxed font-light">{item.desc}</p>
-                </motion.div>
-              ))}
+              <img
+                src="/Gemini_Generated_Image_brzc8xbrzc8xbrzc.png"
+                alt="Demir SpeedConnect Logo"
+                className="w-full max-w-[500px] object-contain"
+              />
             </motion.div>
           </div>
         </div>

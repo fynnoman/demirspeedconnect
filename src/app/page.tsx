@@ -76,7 +76,7 @@ function HeroSection() {
 
         {/* Hintergrundbild – Pfad unten in img src eintragen und den Kommentar entfernen */}
         <motion.div className="absolute inset-0" style={{ scale: bgScale }}>
-          <img src="/Gemini_Generated_Image_brzc8xbrzc8xbrzc.png" alt="" className="w-full h-full object-cover" />
+          <img src="/Gemini_Generated_Image_6nj0mc6nj0mc6nj0.png" alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#0F172A]/60" />
         </motion.div>
 
