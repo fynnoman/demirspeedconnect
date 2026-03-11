@@ -230,16 +230,10 @@ function LeistungenGrid() {
 }
 
 function LeistungCard({ item, index }: { item: { title: string; sub: string; color: string; img: string }; index: number }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end center'] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-
   return (
-    <motion.div
-      ref={ref}
+    <div
       className="relative h-[60vh] flex items-end p-7 overflow-hidden cursor-pointer group border border-white/5"
-      style={{ backgroundColor: item.color, y, opacity }}
+      style={{ backgroundColor: item.color }}
     >
       <div className="absolute inset-0">
         {item.img ? (
@@ -266,7 +260,7 @@ function LeistungCard({ item, index }: { item: { title: string; sub: string; col
         style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
         {String(index + 1).padStart(2, '0')}
       </span>
-    </motion.div>
+    </div>
   );
 }
 
