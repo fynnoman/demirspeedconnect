@@ -7,6 +7,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Lenis from 'lenis';
 
 // --- Navigationslinks anpassen ---
@@ -99,8 +100,15 @@ function HeroSection() {
       <div className="sticky top-0 h-screen overflow-hidden bg-[#0F172A] flex items-center justify-center">
 
         {/* Hintergrundbild – Pfad unten in img src eintragen und den Kommentar entfernen */}
-        <motion.div className="absolute inset-0" style={{ scale: bgScale }}>
-          <img src="/Gemini_Generated_Image_6nj0mc6nj0mc6nj0.png" alt="" className="w-full h-full object-cover" />
+        <motion.div className="absolute inset-0" style={{ scale: bgScale, willChange: 'transform' }}>
+          <Image
+            src="/Gemini_Generated_Image_6nj0mc6nj0mc6nj0.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-[#0F172A]/60" />
         </motion.div>
 
@@ -109,14 +117,21 @@ function HeroSection() {
         <motion.div className="absolute right-0 top-0 w-4 h-full bg-[#1D4ED8]"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }} />
 
-        <motion.div className="relative z-10 text-center px-8" style={{ y: titleY, opacity: titleOpacity }}>
-          {/* Claim-Zeile anpassen */}
-          <motion.img
-            src="/AB257105-9CE0-457F-8EA2-47E07C066099.png"
-            alt="Demir SpeedConnect"
-            className="w-full max-w-[600px] mx-auto object-contain"
+        <motion.div className="relative z-10 text-center px-8" style={{ y: titleY, opacity: titleOpacity, willChange: 'transform, opacity' }}>
+          <motion.div
+            className="w-full max-w-[600px] mx-auto relative"
+            style={{ aspectRatio: '3/1' }}
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
-          />
+          >
+            <Image
+              src="/AB257105-9CE0-457F-8EA2-47E07C066099.png"
+              alt="Demir SpeedConnect"
+              fill
+              priority
+              sizes="(max-width: 768px) 90vw, 600px"
+              className="object-contain"
+            />
+          </motion.div>
 
           <motion.p className="text-[#1D4ED8] text-sm tracking-[0.4em] mt-6 font-bold"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
@@ -176,7 +191,7 @@ function AboutSection() {
         style={{ backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div style={{ x: leftX, opacity }}>
+          <motion.div style={{ x: leftX, opacity, willChange: 'transform, opacity' }}>
             <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">ÜBER UNS</p>
             {/* Überschrift anpassen */}
             <h2 className="text-white text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
@@ -198,7 +213,7 @@ function AboutSection() {
             </Link>
           </motion.div>
 
-          <motion.div className="grid grid-cols-2 gap-4" style={{ x: rightX, opacity }}>
+          <motion.div className="grid grid-cols-2 gap-4" style={{ x: rightX, opacity, willChange: 'transform, opacity' }}>
             {USP_CARDS.map((item) => (
               <div key={item.number} className="bg-[#1E293B] p-6 border-l-4 border-[#1D4ED8]">
                 <p className="text-[#1D4ED8] text-3xl font-black mb-2" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
@@ -237,7 +252,14 @@ function LeistungCard({ item, index }: { item: { title: string; sub: string; col
     >
       <div className="absolute inset-0">
         {item.img ? (
-          <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+          <Image
+            src={item.img}
+            alt={item.title}
+            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className="object-cover"
+          />
         ) : (
           <div className="w-full h-full flex items-center justify-center opacity-20">
             <span className="text-white text-xs tracking-widest">BILD EINFÜGEN</span>
@@ -366,7 +388,7 @@ function StatementSection() {
 
   return (
     <section ref={ref} className="bg-[#1D4ED8] py-32 overflow-hidden">
-      <motion.div className="whitespace-nowrap" style={{ x }}>
+      <motion.div className="whitespace-nowrap" style={{ x, willChange: 'transform' }}>
         {/* Statement-Text anpassen */}
         <h2 className="text-white font-black leading-none"
           style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 12vw, 14rem)' }}>
@@ -455,9 +477,10 @@ export default function Home() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
-    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    return () => { lenis.destroy(); };
+    let rafId: number;
+    function raf(time: number) { lenis.raf(time); rafId = requestAnimationFrame(raf); }
+    rafId = requestAnimationFrame(raf);
+    return () => { cancelAnimationFrame(rafId); lenis.destroy(); };
   }, []);
 
   return (

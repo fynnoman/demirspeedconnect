@@ -7,6 +7,7 @@
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Lenis from 'lenis';
 
 // --- Ticker-Begriffe anpassen ---
@@ -23,9 +24,10 @@ const ZAHLEN = [
 export default function UeberUns() {
   useEffect(() => {
     const lenis = new Lenis({ duration: 0.9, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
-    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    return () => { lenis.destroy(); };
+    let rafId: number;
+    function raf(time: number) { lenis.raf(time); rafId = requestAnimationFrame(raf); }
+    rafId = requestAnimationFrame(raf);
+    return () => { cancelAnimationFrame(rafId); lenis.destroy(); };
   }, []);
 
   const heroRef = useRef<HTMLElement>(null);
@@ -38,7 +40,7 @@ export default function UeberUns() {
       {/* Nav – Logo & Links anpassen */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         <Link href="/">
-          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
+          <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={140} height={40} priority className="h-10 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {[{ label: 'Leistungen', href: '/leistungen' }, { label: 'Über uns', href: '/ueber-uns' }, { label: 'Kontakt', href: '/kontakt' }].map(item => (
@@ -63,13 +65,12 @@ export default function UeberUns() {
             />
           ))}
         </div>
-        {/* Helles Zentrum-Glühen */}
         <div className="absolute inset-0"
           style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(29,78,216,0.30) 0%, rgba(29,78,216,0.08) 40%, transparent 70%)' }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-[#0F172A]/40" />
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8] z-10"
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1 }} />
-        <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity }}>
+        <motion.div className="text-center relative z-10" style={{ y: titleY, opacity: titleOpacity, willChange: 'transform, opacity' }}>
           <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">WER WIR SIND</p>
           <h1 className="text-white font-black leading-none tracking-tighter"
             style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(3.5rem, 10vw, 11rem)' }}>
@@ -88,6 +89,7 @@ export default function UeberUns() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9 }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
               <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">UNSERE GESCHICHTE</p>
               <h2 className="text-[#0F172A] text-5xl lg:text-7xl font-black leading-none tracking-tighter mb-8"
@@ -109,12 +111,18 @@ export default function UeberUns() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9 }}
               viewport={{ once: true }}
+              style={{ willChange: 'transform, opacity' }}
             >
-              <img
-                src="/Gemini_Generated_Image_brzc8xbrzc8xbrzc.png"
-                alt="Demir SpeedConnect Logo"
-                className="w-full max-w-[500px] object-contain"
-              />
+              <div className="relative w-full max-w-[500px] aspect-square">
+                <Image
+                  src="/Gemini_Generated_Image_brzc8xbrzc8xbrzc.png"
+                  alt="Demir SpeedConnect"
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 768px) 90vw, 500px"
+                  className="object-contain"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -126,6 +134,7 @@ export default function UeberUns() {
           className="whitespace-nowrap"
           animate={{ x: [0, '-50%'] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          style={{ willChange: 'transform' }}
         >
           {[...TICKER_WORDS, ...TICKER_WORDS].map((w, i) => (
             <span key={i} className="text-white font-black text-5xl lg:text-7xl tracking-tighter mr-12 inline-block"
@@ -200,7 +209,7 @@ export default function UeberUns() {
       <footer className="bg-[#0F172A] text-white py-12 border-t border-[#1E293B]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
           <Link href="/">
-            <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
+            <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
           </Link>
           <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">
