@@ -289,7 +289,8 @@ function ContactSection() {
             <div className="space-y-5 text-[#475569]">
               {[
                 { label: 'ADRESSE', lines: ['Talstraße 67', '66701 Beckingen'] },
-                { label: 'E-MAIL', lines: ['info@demir-speedconnect.de'], href: 'mailto:info@demir-speedconnect.de' },
+                { label: 'TELEFON', lines: ['01737366820'], href: 'tel:01737366820' },
+                { label: 'E-MAIL', lines: ['info@speedconnect-demir.de'], href: 'mailto:info@speedconnect-demir.de' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="w-1 min-h-[20px] bg-[#1D4ED8] shrink-0 mt-1" />
@@ -400,7 +401,8 @@ export default function Home() {
                 <p className="text-white font-bold">Demir SpeedConnect</p>
                 <p>Talstraße 67</p>
                 <p>66701 Beckingen</p>
-                <p className="mt-2"><a href="mailto:info@demir-speedconnect.de" className="hover:text-white transition-colors">info@demir-speedconnect.de</a></p>
+                <p className="mt-2"><a href="tel:01737366820" className="hover:text-white transition-colors">01737366820</a></p>
+                <p><a href="mailto:info@speedconnect-demir.de" className="hover:text-white transition-colors">info@speedconnect-demir.de</a></p>
               </div>
             </div>
           </div>

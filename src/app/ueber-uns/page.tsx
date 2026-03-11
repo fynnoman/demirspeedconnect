@@ -183,7 +183,11 @@ export default function UeberUns() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-[#1D4ED8]" />
-              <a href="mailto:info@demir-speedconnect.de" className="hover:text-[#1D4ED8] transition-colors">info@demir-speedconnect.de</a>
+              <a href="tel:01737366820" className="hover:text-[#1D4ED8] transition-colors">01737366820</a>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-[#1D4ED8]" />
+              <a href="mailto:info@speedconnect-demir.de" className="hover:text-[#1D4ED8] transition-colors">info@speedconnect-demir.de</a>
             </div>
           </div>
           <motion.div className="mt-12"
