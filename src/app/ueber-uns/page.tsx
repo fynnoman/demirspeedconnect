@@ -54,7 +54,7 @@ export default function UeberUns() {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[70vh] bg-[#0F172A] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/C336A6BB-5175-4C44-9221-F67482DC4CEF.png" alt="Banner" className="w-full h-full object-cover" />
+          <img src="/Gemini_Generated_Image_brzc8xbrzc8xbrzc.png" alt="Banner" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#0F172A]/70" />
         </div>
         <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8] z-10"
