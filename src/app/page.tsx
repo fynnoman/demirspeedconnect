@@ -117,13 +117,12 @@ function HeroSection() {
           </motion.p>
 
           {/* Firmenname anpassen */}
-          <motion.h1
-            className="text-white leading-[0.9] font-black tracking-tighter"
-            style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(3rem, 9vw, 10rem)' }}
-            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}>
-            DEMIR<br />
-            <span className="text-[#1D4ED8]">SPEED</span>CONNECT
-          </motion.h1>
+          <motion.img
+            src="/AB257105-9CE0-457F-8EA2-47E07C066099.png"
+            alt="Demir SpeedConnect"
+            className="w-full max-w-[600px] mx-auto object-contain"
+            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
+          />
 
           {/* Untertitel anpassen */}
           <motion.p className="text-[#94A3B8] text-lg lg:text-2xl mt-8 font-light tracking-wide"
@@ -477,7 +476,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         {/* Logo-Text → anpassen */}
         <Link href="/">
-          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
+          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-16 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
