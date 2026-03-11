@@ -95,7 +95,7 @@ function HeroSection() {
           {/* Firmenname anpassen */}
           <motion.h1
             className="text-white leading-[0.9] font-black tracking-tighter"
-            style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 14vw, 16rem)' }}
+            style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(3rem, 9vw, 10rem)' }}
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}>
             DEMIR<br />
             <span className="text-[#1D4ED8]">SPEED</span>CONNECT
