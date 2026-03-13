@@ -157,20 +157,13 @@ function HeroSection() {
           initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }} />
 
         <motion.div className="relative z-10 text-center px-8" style={{ y: titleY, opacity: titleOpacity, willChange: 'transform, opacity' }}>
-          <motion.div
-            className="w-full max-w-[600px] mx-auto relative"
-            style={{ aspectRatio: '3/1' }}
+          <motion.h1
+            className="text-white font-black leading-none tracking-tighter"
+            style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(3rem, 10vw, 11rem)' }}
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
           >
-            <Image
-              src="/AB257105-9CE0-457F-8EA2-47E07C066099.png"
-              alt="Demir SpeedConnect"
-              fill
-              priority
-              sizes="(max-width: 768px) 90vw, 600px"
-              className="object-contain"
-            />
-          </motion.div>
+            DEMIR<br /><span className="text-[#1D4ED8]">SPEED</span><br />CONNECT
+          </motion.h1>
 
           <motion.p className="text-[#1D4ED8] text-sm tracking-[0.4em] mt-6 font-bold"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}>
@@ -587,7 +580,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         {/* Logo-Text → anpassen */}
         <Link href="/">
-          <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 lg:h-16 w-auto object-contain" />
+          <Image src="/Gemini_Generated_Image_e9xku7e9xku7e9xk.png" alt="Demir SpeedConnect" width={160} height={64} className="h-10 lg:h-16 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
@@ -629,8 +622,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div>
               <Link href="/">
-              <img src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" className="h-10 w-auto object-contain" />
-            </Link>
+                <Image src="/Gemini_Generated_Image_e9xku7e9xku7e9xk.png" alt="Demir SpeedConnect" width={140} height={40} loading="lazy" className="h-10 w-auto object-contain" />
+              </Link>
               <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
                 Ihr Spezialist für Glasfaser-Infrastruktur,<br />Tiefbau und Hausanschlüsse.
               </p>
