@@ -5,7 +5,7 @@
 // ============================================================
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import Lenis from 'lenis';
@@ -107,21 +107,24 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 }
 
 function ServiceWord({ text, href, index }: { text: string; href: string; index: number }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
+  const prefersReduced = useReducedMotion();
   const direction = index % 2 === 0 ? -1 : 1;
-  const x = useTransform(scrollYProgress, [0, 1], [direction * 100 + 'vw', '0vw']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
+  const initial = prefersReduced ? { opacity: 0 } : { opacity: 0, x: direction * 120 };
+  const animate = prefersReduced ? { opacity: 1 } : { opacity: 1, x: 0 };
 
   return (
-    <div ref={ref} className="w-full flex justify-center">
+    <div className="w-full flex justify-center will-change-transform">
       <motion.a
         href={href}
         className="relative text-[#0F172A] text-3xl sm:text-5xl lg:text-7xl font-black hover:text-[#1D4ED8] transition-colors tracking-tight"
-        style={{ fontFamily: 'Arial Black, Arial, sans-serif', x, opacity }}
+        style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}
+        initial={initial}
+        whileInView={animate}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: index * 0.08 }}
       >
         {text}
-        <motion.div className="absolute bottom-1 left-0 right-0 h-2 lg:h-3 bg-[#1D4ED8] -z-10" style={{ opacity: 0.35 }} />
+        <div className="absolute bottom-1 left-0 right-0 h-2 lg:h-3 bg-[#1D4ED8] -z-10 opacity-35" />
       </motion.a>
     </div>
   );
@@ -130,16 +133,15 @@ function ServiceWord({ text, href, index }: { text: string; href: string; index:
 function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '60%']);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section ref={heroRef} className="relative h-[180vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-[#0F172A] flex items-center justify-center">
 
-        {/* Hintergrundbild – Pfad unten in img src eintragen und den Kommentar entfernen */}
-        <motion.div className="absolute inset-0" style={{ scale: bgScale, willChange: 'transform' }}>
+        {/* Hintergrundbild – statisch, kein Scale-Parallax für bessere Performance */}
+        <div className="absolute inset-0">
           <Image
             src="/Gemini_Generated_Image_6nj0mc6nj0mc6nj0.png"
             alt=""
@@ -149,12 +151,10 @@ function HeroSection() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-[#0F172A]/60" />
-        </motion.div>
+        </div>
 
-        <motion.div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8]"
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1.2, ease: 'easeOut' }} />
-        <motion.div className="absolute right-0 top-0 w-4 h-full bg-[#1D4ED8]"
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }} />
+        <div className="absolute left-0 top-0 w-4 h-full bg-[#1D4ED8]" />
+        <div className="absolute right-0 top-0 w-4 h-full bg-[#1D4ED8]" />
 
         <motion.div className="relative z-10 text-center px-8" style={{ y: titleY, opacity: titleOpacity, willChange: 'transform, opacity' }}>
           <motion.h1
@@ -210,20 +210,19 @@ function ServicesNavSection() {
 }
 
 function AboutSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const leftX = useTransform(scrollYProgress, [0, 0.5], [-60, 0]);
-  const rightX = useTransform(scrollYProgress, [0, 0.5], [60, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-
   return (
-    <section ref={ref} className="bg-[#0F172A] py-20 lg:py-32 overflow-hidden relative">
+    <section className="bg-[#0F172A] py-20 lg:py-32 overflow-hidden relative">
       {/* Rastermuster Hintergrund */}
       <div className="absolute inset-0 opacity-[0.07]"
         style={{ backgroundImage: 'linear-gradient(#1D4ED8 1px, transparent 1px), linear-gradient(90deg, #1D4ED8 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <motion.div style={{ x: leftX, opacity, willChange: 'transform, opacity' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
             <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">ÜBER UNS</p>
             <h2 className="text-white text-5xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
               style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
@@ -244,7 +243,13 @@ function AboutSection() {
             </Link>
           </motion.div>
 
-          <motion.div className="grid grid-cols-2 gap-3 lg:gap-4" style={{ x: rightX, opacity, willChange: 'transform, opacity' }}>
+          <motion.div
+            className="grid grid-cols-2 gap-3 lg:gap-4"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
+          >
             {USP_CARDS.map((item) => (
               <div key={item.number} className="bg-[#1E293B] p-4 lg:p-6 border-l-4 border-[#1D4ED8]">
                 <p className="text-[#1D4ED8] text-2xl lg:text-3xl font-black mb-2" style={{ fontFamily: 'Arial Black, Arial, sans-serif' }}>
@@ -413,33 +418,29 @@ function ScrollToTopButton() {
 }
 
 function StatementSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const x = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
-
   return (
-    <section ref={ref} className="bg-[#1D4ED8] py-20 lg:py-32 overflow-hidden">
-      <motion.div className="whitespace-nowrap" style={{ x, willChange: 'transform' }}>
-        {/* Statement-Text anpassen */}
+    <section className="bg-[#1D4ED8] py-20 lg:py-32 overflow-hidden">
+      <div className="whitespace-nowrap">
         <h2 className="text-white font-black leading-none"
           style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 12vw, 14rem)' }}>
           GLASFASER&nbsp;&middot;&nbsp;TIEFBAU&nbsp;&middot;&nbsp;HAUSANSCHLÜSSE&nbsp;&middot;&nbsp;SPLEISSEN&nbsp;&middot;&nbsp;
         </h2>
-      </motion.div>
+      </div>
     </section>
   );
 }
 
 function ContactSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.4], [60, 0]);
-
   return (
-    <section ref={ref} className="bg-white py-20 lg:py-32">
+    <section className="bg-white py-20 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start" style={{ opacity, y }}>
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
           <div>
             <p className="text-[#1D4ED8] text-xs tracking-[0.4em] font-bold mb-6">KONTAKT</p>
             <h2 className="text-[#0F172A] text-4xl sm:text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-8"
@@ -559,9 +560,10 @@ export default function Home() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.9,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
       smoothWheel: true,
+      syncTouch: false,
     });
     let rafId: number;
     function raf(time: number) { lenis.raf(time); rafId = requestAnimationFrame(raf); }
