@@ -418,14 +418,18 @@ function ScrollToTopButton() {
 }
 
 function StatementSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const x = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
+
   return (
-    <section className="bg-[#1D4ED8] py-20 lg:py-32 overflow-hidden">
-      <div className="whitespace-nowrap">
+    <section ref={ref} className="bg-[#1D4ED8] py-20 lg:py-32 overflow-hidden">
+      <motion.div className="whitespace-nowrap" style={{ x, willChange: 'transform' }}>
         <h2 className="text-white font-black leading-none"
           style={{ fontFamily: 'Arial Black, Arial, sans-serif', fontSize: 'clamp(4rem, 12vw, 14rem)' }}>
           GLASFASER&nbsp;&middot;&nbsp;TIEFBAU&nbsp;&middot;&nbsp;HAUSANSCHLÜSSE&nbsp;&middot;&nbsp;SPLEISSEN&nbsp;&middot;&nbsp;
         </h2>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -560,10 +564,9 @@ export default function Home() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => 1 - Math.pow(1 - t, 4),
+      duration: 0.9,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      syncTouch: false,
     });
     let rafId: number;
     function raf(time: number) { lenis.raf(time); rafId = requestAnimationFrame(raf); }
