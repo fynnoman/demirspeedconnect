@@ -49,7 +49,7 @@ export default function Impressum() {
 
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-5 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
         <Link href="/">
-          <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={140} height={40} priority className="h-10 w-auto object-contain" />
+          <Image src="/Gemini_Generated_Image_e9xku7e9xku7e9xk.png" alt="Demir SpeedConnect" width={140} height={40} priority className="h-10 w-auto object-contain" />
         </Link>
         <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map(item => (
@@ -77,7 +77,7 @@ export default function Impressum() {
         <div className="space-y-10 text-[#475569]">
 
           <div>
-            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">ANGABEN GEMÄSS § 5 TMG</h2>
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">ANGABEN GEMÄSS § 5 DDG</h2>
             <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
               <p className="text-[#0F172A] font-bold">Demir SpeedConnect UG (haftungsbeschränkt)</p>
               <p>Talstraße 67</p>
@@ -126,13 +126,9 @@ export default function Impressum() {
             <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">EU-STREITSCHLICHTUNG</h2>
             <div className="border-l-2 border-[#1D4ED8] pl-5 text-sm font-light leading-relaxed space-y-2">
               <p>
-                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
-                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer"
-                  className="text-[#1D4ED8] hover:underline">
-                  https://ec.europa.eu/consumers/odr/
-                </a>
+                Die EU-Plattform zur Online-Streitbeilegung (OS) wurde zum 20. Juli 2025 eingestellt und steht nicht
+                mehr zur Verfügung.
               </p>
-              <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
             </div>
           </div>
 
@@ -152,8 +148,8 @@ export default function Impressum() {
               <div>
                 <p className="text-[#0F172A] font-semibold mb-1">Haftung für Inhalte</p>
                 <p>
-                  Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den
-                  allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                  Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den
+                  allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht
                   verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
                   zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
                 </p>
@@ -184,7 +180,7 @@ export default function Impressum() {
       <footer className="bg-[#0F172A] text-white py-12 border-t border-[#1E293B]">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
           <Link href="/">
-            <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
+            <Image src="/Gemini_Generated_Image_e9xku7e9xku7e9xk.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
           </Link>
           <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">
