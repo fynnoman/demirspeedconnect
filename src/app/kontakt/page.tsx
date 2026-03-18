@@ -16,8 +16,8 @@ const KONTAKT_ITEMS = [
 	{
 		label: 'TELEFON',
 		icon: '📞',
-		lines: ['01737366820'],
-		href: 'tel:01737366820',
+		lines: ['+49 172 7398452'],
+		href: 'tel:+491727398452',
 	},
 	{
 		label: 'E-MAIL',
@@ -130,7 +130,7 @@ export default function KontaktPage() {
 						</Link>
 					))}
 					<a
-						href="tel:01737366820"
+						href="tel:+491727398452"
 						className="px-6 py-3 bg-[#1D4ED8] text-white text-xs font-bold tracking-widest hover:bg-white hover:text-[#1D4ED8] transition-colors"
 					>
 						JETZT ANRUFEN
@@ -271,10 +271,10 @@ export default function KontaktPage() {
 						viewport={{ once: true }}
 					>
 						<a
-							href="tel:01737366820"
+							href="tel:+491727398452"
 							className="flex-1 py-5 bg-[#1D4ED8] text-white text-sm font-bold tracking-widest text-center hover:bg-[#0F172A] transition-colors"
 						>
-							📞 0173 7366820
+							📞 +49 172 7398452
 						</a>
 						<a
 							href="mailto:info@speedconnect-demir.de"

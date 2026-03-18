@@ -455,7 +455,7 @@ function ContactSection() {
             <div className="space-y-5 text-[#475569]">
               {[
                 { label: 'ADRESSE', lines: ['Talstraße 67', '66701 Beckingen'] },
-                { label: 'TELEFON', lines: ['01737366820'], href: 'tel:01737366820' },
+                { label: 'TELEFON', lines: ['+49 172 7398452'], href: 'tel:+491727398452' },
                 { label: 'E-MAIL', lines: ['info@speedconnect-demir.de'], href: 'mailto:info@speedconnect-demir.de' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
@@ -516,7 +516,7 @@ const SCHEMA_LD = {
   "url": "https://demir-speedconnect.de",
   "logo": "https://demir-speedconnect.de/AB257105-9CE0-457F-8EA2-47E07C066099.png",
   "image": "https://demir-speedconnect.de/og-image.png",
-  "telephone": "+4917373668200",
+  "telephone": "+491727398452",
   "email": "info@speedconnect-demir.de",
   "address": {
     "@type": "PostalAddress",
@@ -647,7 +647,7 @@ export default function Home() {
                 <p className="text-white font-bold">Demir SpeedConnect</p>
                 <p>Talstraße 67</p>
                 <p>66701 Beckingen</p>
-                <p className="mt-2"><a href="tel:01737366820" className="hover:text-white transition-colors">01737366820</a></p>
+                <p className="mt-2"><a href="tel:+491727398452" className="hover:text-white transition-colors">+49 172 7398452</a></p>
                 <p><a href="mailto:info@speedconnect-demir.de" className="hover:text-white transition-colors">info@speedconnect-demir.de</a></p>
               </div>
             </div>

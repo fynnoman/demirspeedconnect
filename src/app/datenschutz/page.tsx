@@ -116,8 +116,8 @@ export default function Datenschutz() {
               </p>
               <p>
                 Telefon:{' '}
-                <a href="tel:01737366820" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">
-                  0173 7366820
+                <a href="tel:+491727398452" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">
+                  +49 172 7398452
                 </a>
               </p>
             </div>

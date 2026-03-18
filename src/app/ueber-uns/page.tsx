@@ -221,7 +221,7 @@ export default function UeberUns() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-[#1D4ED8] shrink-0" />
-              <a href="tel:01737366820" className="hover:text-[#1D4ED8] transition-colors">0173 7366820</a>
+              <a href="tel:+491727398452" className="hover:text-[#1D4ED8] transition-colors">+49 172 7398452</a>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-[#1D4ED8] shrink-0" />

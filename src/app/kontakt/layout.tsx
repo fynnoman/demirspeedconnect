@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Kontaktieren Sie Demir SpeedConnect UG – Talstraße 67, 66701 Beckingen. Telefon: 0173 7366820. E-Mail: info@speedconnect-demir.de. Angebot anfordern.",
+    "Kontaktieren Sie Demir SpeedConnect UG – Talstraße 67, 66701 Beckingen. Telefon: +49 172 7398452. E-Mail: info@speedconnect-demir.de. Angebot anfordern.",
   keywords: [
     "Kontakt Demir SpeedConnect",
     "Glasfaser Angebot",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kontakt – Demir SpeedConnect",
     description:
-      "Nehmen Sie Kontakt auf – Talstraße 67, 66701 Beckingen. Telefon: 0173 7366820. Wir freuen uns auf Ihre Anfrage.",
+      "Nehmen Sie Kontakt auf – Talstraße 67, 66701 Beckingen. Telefon: +49 172 7398452. Wir freuen uns auf Ihre Anfrage.",
     url: "https://demir-speedconnect.de/kontakt",
   },
 };

@@ -97,7 +97,7 @@ export default function Impressum() {
           <div>
             <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">KONTAKT</h2>
             <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
-              <p>Telefon: <a href="tel:01737366820" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">0173 7366820</a></p>
+              <p>Telefon: <a href="tel:+491727398452" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">+49 172 7398452</a></p>
               <p>E-Mail: <a href="mailto:info@speedconnect-demir.de" className="text-[#0F172A] font-semibold hover:text-[#1D4ED8] transition-colors">info@speedconnect-demir.de</a></p>
               <p>Website: <a href="https://demir-speedconnect.de" className="hover:text-[#1D4ED8] transition-colors">https://demir-speedconnect.de</a></p>
             </div>
