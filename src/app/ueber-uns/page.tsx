@@ -249,6 +249,9 @@ export default function UeberUns() {
             <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>
           </div>
         </div>
+        <div className="mt-4 text-center text-xs text-[#94A3B8]">
+          designed by fylu - marketing <a href="https://fylumarketing.de" className="underline hover:text-white">fylumarketing.de</a>
+        </div>
       </footer>
     </div>
   );
