@@ -510,7 +510,7 @@ const SCHEMA_LD = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://demir-speedconnect.de",
-  "name": "Demir SpeedConnect UG (haftungsbeschränkt)",
+  "name": "Demir SpeedConnect GmbH",
   "alternateName": "Demir SpeedConnect",
   "description": "Professionelle Glasfaserverlegung, LWL-Spleißen, Tiefbauarbeiten und Glasfaser-Hausanschlüsse – deutschlandweit tätig.",
   "url": "https://demir-speedconnect.de",
@@ -653,7 +653,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-[#1E293B] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
+            <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect GmbH</p>
             <div className="flex gap-6 text-xs font-light text-[#475569]">
               <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
               <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>

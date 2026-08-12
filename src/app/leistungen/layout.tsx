@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Leistungen",
   description:
-    "Unsere Leistungen im Überblick: Glasfaserverlegung, LWL-Spleißen, Tiefbauarbeiten und Glasfaser-Hausanschlüsse. Demir SpeedConnect UG – deutschlandweit tätig.",
+    "Unsere Leistungen im Überblick: Glasfaserverlegung, LWL-Spleißen, Tiefbauarbeiten und Glasfaser-Hausanschlüsse. Demir SpeedConnect GmbH – deutschlandweit tätig.",
   keywords: [
     "Glasfaserverlegung",
     "LWL Spleißen",

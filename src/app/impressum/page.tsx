@@ -79,7 +79,7 @@ export default function Impressum() {
           <div>
             <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">ANGABEN GEMÄSS § 5 DDG</h2>
             <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
-              <p className="text-[#0F172A] font-bold">Demir SpeedConnect UG (haftungsbeschränkt)</p>
+              <p className="text-[#0F172A] font-bold">Demir SpeedConnect GmbH</p>
               <p>Talstraße 67</p>
               <p>66701 Beckingen</p>
             </div>
@@ -104,12 +104,12 @@ export default function Impressum() {
           </div>
 
           <div>
-            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">UMSATZSTEUER-ID / STEUERNUMMER</h2>
-            <div className="border-l-2 border-[#1D4ED8] pl-5 text-sm font-light leading-relaxed">
+            <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">UMSATZSTEUER-ID</h2>
+            <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
               <p>
-                Die Steuernummer wird aus Sicherheitsgründen und zum Schutz vor Missbrauch nicht öffentlich angezeigt,
-                kann jedoch auf berechtigte Anfrage jederzeit mitgeteilt werden.
+                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
               </p>
+              <p className="text-[#0F172A] font-semibold">DE458164467</p>
             </div>
           </div>
 
@@ -182,7 +182,7 @@ export default function Impressum() {
           <Link href="/">
             <Image src="/Gemini_Generated_Image_e9xku7e9xku7e9xk.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
           </Link>
-          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
+          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect GmbH</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">
             <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
             <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>

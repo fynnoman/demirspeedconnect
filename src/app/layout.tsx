@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Demir SpeedConnect",
   },
   description:
-    "Demir SpeedConnect UG – Ihr Spezialist für Glasfaserverlegung, Lichtleitfaser-Spleißen, Tiefbauarbeiten und Hausanschlüsse. Deutschlandweit tätig, Sitz in Beckingen (Saarland).",
+    "Demir SpeedConnect GmbH – Ihr Spezialist für Glasfaserverlegung, Lichtleitfaser-Spleißen, Tiefbauarbeiten und Hausanschlüsse. Deutschlandweit tätig, Sitz in Beckingen (Saarland).",
   keywords: [
     "Glasfaser",
     "Glasfaserverlegung",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     "Glasfaserausbau",
     "Internetausbau",
   ],
-  authors: [{ name: "Demir SpeedConnect UG", url: BASE_URL }],
-  creator: "Demir SpeedConnect UG",
-  publisher: "Demir SpeedConnect UG",
+  authors: [{ name: "Demir SpeedConnect GmbH", url: BASE_URL }],
+  creator: "Demir SpeedConnect GmbH",
+  publisher: "Demir SpeedConnect GmbH",
   robots: {
     index: true,
     follow: true,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "Demir SpeedConnect",
     title: "Demir SpeedConnect – Glasfaser & Tiefbau",
     description:
-      "Professionelle Glasfaserverlegung, Spleißen, Tiefbau und Hausanschlüsse – deutschlandweit. Demir SpeedConnect UG, Beckingen.",
+      "Professionelle Glasfaserverlegung, Spleißen, Tiefbau und Hausanschlüsse – deutschlandweit. Demir SpeedConnect GmbH, Beckingen.",
     images: [
       {
         url: "/og-image.png",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Demir SpeedConnect – Glasfaser & Tiefbau",
     description:
-      "Professionelle Glasfaserverlegung, Spleißen, Tiefbau und Hausanschlüsse – deutschlandweit. Demir SpeedConnect UG, Beckingen.",
+      "Professionelle Glasfaserverlegung, Spleißen, Tiefbau und Hausanschlüsse – deutschlandweit. Demir SpeedConnect GmbH, Beckingen.",
     images: ["/og-image.png"],
   },
   icons: {

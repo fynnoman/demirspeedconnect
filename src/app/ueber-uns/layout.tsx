@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Über uns",
   description:
-    "Lernen Sie Demir SpeedConnect UG kennen – Ihr zuverlässiger Partner für Glasfaser-Infrastruktur, Tiefbau und Hausanschlüsse mit Sitz in Beckingen, Saarland.",
+    "Lernen Sie Demir SpeedConnect GmbH kennen – Ihr zuverlässiger Partner für Glasfaser-Infrastruktur, Tiefbau und Hausanschlüsse mit Sitz in Beckingen, Saarland.",
   keywords: [
     "Demir SpeedConnect",
     "Über uns",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Über uns – Demir SpeedConnect",
     description:
-      "Demir SpeedConnect UG – Ihr verlässlicher Spezialist für Glasfaser-Infrastruktur, Tiefbau und Hausanschlüsse aus Beckingen.",
+      "Demir SpeedConnect GmbH – Ihr verlässlicher Spezialist für Glasfaser-Infrastruktur, Tiefbau und Hausanschlüsse aus Beckingen.",
     url: "https://demir-speedconnect.de/ueber-uns",
   },
 };

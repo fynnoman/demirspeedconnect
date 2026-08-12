@@ -104,7 +104,7 @@ export default function Datenschutz() {
           <div>
             <h2 className="text-[#0F172A] font-bold text-xs tracking-[0.3em] mb-4">2. VERANTWORTLICHE STELLE</h2>
             <div className="border-l-2 border-[#1D4ED8] pl-5 space-y-1 text-sm font-light">
-              <p className="text-[#0F172A] font-bold">Demir SpeedConnect UG (haftungsbeschränkt)</p>
+              <p className="text-[#0F172A] font-bold">Demir SpeedConnect GmbH</p>
               <p>Adem Demir</p>
               <p>Talstraße 67</p>
               <p>66701 Beckingen</p>
@@ -242,7 +242,7 @@ export default function Datenschutz() {
           <Link href="/">
             <Image src="/AB257105-9CE0-457F-8EA2-47E07C066099.png" alt="Demir SpeedConnect" width={120} height={40} loading="lazy" className="h-10 w-auto object-contain" />
           </Link>
-          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect UG (haftungsbeschränkt)</p>
+          <p className="text-xs font-light text-[#475569]">© 2026 Demir SpeedConnect GmbH</p>
           <div className="flex gap-6 text-xs font-light text-[#475569]">
             <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
             <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>

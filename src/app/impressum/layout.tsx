@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Impressum",
   description:
-    "Impressum der Demir SpeedConnect UG (haftungsbeschränkt) – Angaben gemäß § 5 TMG. Talstraße 67, 66701 Beckingen. Handelsregister: HRB 111710, AG Saarbrücken.",
+    "Impressum der Demir SpeedConnect GmbH – Angaben gemäß § 5 TMG. Talstraße 67, 66701 Beckingen. Handelsregister: HRB 111710, AG Saarbrücken.",
   robots: {
     index: false,
     follow: false,

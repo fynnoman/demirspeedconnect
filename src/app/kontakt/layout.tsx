@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Kontaktieren Sie Demir SpeedConnect UG – Talstraße 67, 66701 Beckingen. Telefon: +49 172 7398452. E-Mail: info@speedconnect-demir.de. Angebot anfordern.",
+    "Kontaktieren Sie Demir SpeedConnect GmbH – Talstraße 67, 66701 Beckingen. Telefon: +49 172 7398452. E-Mail: info@speedconnect-demir.de. Angebot anfordern.",
   keywords: [
     "Kontakt Demir SpeedConnect",
     "Glasfaser Angebot",
